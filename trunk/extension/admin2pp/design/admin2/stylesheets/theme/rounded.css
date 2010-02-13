@@ -1,0 +1,337 @@
+/* ADMIN2 ROUNDED CSS 20100107 */
+/*
+   The border-radius (rounded corner) css is supported in
+   FF 3.5+, Safari 3.0+, Chrome, Opera Presto 2.3+ ("10.50") and IE9.
+   And fallbacks gracefully to normal corners in older browsers. 
+*/
+
+
+/* LOGIN PAGE (center it) */
+
+.loginpage, .loginpage #page
+{
+    height: 100%;
+}
+
+.loginpage #header
+{
+    height: 25%;
+}
+
+.loginpage #columns
+{
+    height: 74%;
+    background-color: #fff;
+}
+
+.loginpage #columns #maincolumn
+{
+    border-right: 0 none;
+}
+
+.loginpage #columns #maincontent
+{
+    max-width: 48em;
+    margin: auto;
+}
+
+.loginpage #columns #maincontent .box-header
+{
+    background: transparent url(../../images/logo-sprite-43.png) no-repeat right -135px scroll; /* url('../../images/2/ez-logo-black.png') no-repeat top right scroll; */
+    padding-top: 1em;
+}
+
+.loginpage #footer
+{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.loginpage #debug
+{
+    padding-bottom: 4em;
+}
+
+
+/* HEADER */
+#header
+{ 
+    border-bottom: 1px solid #666;
+    background: #2ebae0 url(../../images/h-sprite-43.png) repeat-x 0 -62px;/*url('../../images/2/header.png') repeat-x left top scroll;*/
+}
+
+.loginpage #header
+{
+	border-bottom-width: 0;
+    background: #FEFEFE url(../../images/h-sprite-43.png) repeat-x 0 -10474px;/*url('../../images/2/gradient-to-light.png') repeat-x left top scroll;*/
+}
+
+/* TOP MENU (TABS) */
+
+#header-topmenu ul li a, #header-topmenu ul li span.disabled, ul.tabs li a, ul.tabs li span.disabled
+{
+    border: 1px solid #666;
+    border-bottom-width: 0;
+    background: #f3f3f3 url(../../images/h-sprite-43.png) repeat-x 0 -197px;/*url('../../images/2/gradient-to-darker.png') repeat-x left top scroll;*/
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+ul.tabs li a, ul.tabs li span.disabled
+{
+    border-color: #ccc;
+}
+
+#header-topmenu ul li.selected a, #header-topmenu ul li.selected span.disabled, ul.tabs li.selected a
+{
+    border-bottom: 1px solid #fff;
+    background: #fff none;
+}
+
+.tab-content
+{
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+/* CSS Media Query's to adjust layout based on screen width */
+
+@media all and (max-width: 1080px)
+{
+    #header-logo a, #header-logo span
+    {
+        width: 30px;/* Use only eZ logo on small screens */
+    }
+
+    #header-topmenu ul li a, #header-topmenu ul li span.disabled
+    {
+        min-width: 90px;/* slightly smaller tabs */
+    }
+}
+
+/* BOX MODEL */
+
+a.show-hide-control
+{
+    background-color: white;
+    border: 1px solid #999;
+    border-left: 0;
+    margin-left: 0;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-topright: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+a.show-hide-control:hover
+{
+    border-color: #666;
+}
+
+#controlbar-top .box-bc
+{
+    border: 1px solid #ccc;
+    background: #FEFEFE url(../../images/h-sprite-43.png) repeat-x 0 -10474px;/*url('../../images/2/gradient-to-light.png') repeat-x left top scroll;*/
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.box-bc .box-ml, .box-header .box-ml
+{
+    border: 0 none;
+    background-color: transparent;
+}
+
+.box-header
+{
+    border-bottom: 1px solid #ccc;
+}
+
+#controlbar-top .box-bc .box-ml
+{
+    border-top-width: 0;
+}
+
+div.context-information
+{
+    background-color:#f8f8f8;
+    border: 1px solid #ccc;
+    border-top: 0 none;
+    -moz-border-radius-bottomleft: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+/* MENU-BLOCK */
+
+.menu-block li a
+{
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+/* BUTTONS */
+p.versions
+{
+    -moz-border-radius-bottomleft: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border: 1px solid #CCCCCC;
+    border-top: 0 none;
+    background: #f5f5f5 url(../../images/2/gradient-to-darker.png) repeat-x center bottom scroll;
+}
+p.versions a
+{
+    text-decoration: none;
+}
+
+p.table-preferences
+{
+    -moz-border-radius-bottomleft: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border: 1px solid #CCCCCC;
+    border-top: 0 none;
+    background: #D1DFE9 url(../../images/2/gradient-to-darker.png) repeat-x center bottom scroll;
+}
+
+p.table-preferences :first-child
+{
+    border-right: 1px solid #ccc;
+}
+
+p.table-preferences :last-child
+{
+    border-left: 1px solid #ccc;
+}
+
+p.table-preferences .current:first-child
+{
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-left: 1px;
+}
+
+p.table-preferences .current:last-child
+{
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+input.button, input.defaultbutton, input.button-disabled
+{
+    color: #fff;
+    background: #D1DFE9 url(../../images/h-sprite-43.png) repeat-x left -31px;/*url(../../images/2/gradient-blue.png) repeat-x center bottom scroll;*/
+    border: 1px solid #dedede;
+    border-color: #aaa #ccc #ccc #aaa;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+input.defaultbutton, input.button-disabled
+{
+    background-color: #f5f5f5;
+    background-position: center top;
+    border-color: #ddd;
+}
+
+input.defaultbutton
+{
+    background-image: url(../../images/h-sprite-43.png);/*url(../../images/2/gradient-orange.png);*/
+}
+
+input.button-disabled
+{
+    color: #888;
+    background-image: url(../../images/2/gradient-btn-disabled.png);
+}
+
+/* SEARCH */
+#searchtext
+{
+    border: 1px solid #666;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: #fff url(../../images/h-sprite-43.png) no-repeat right -167px;/*url('../../images/2/btn-search-16x16.png') no-repeat right center scroll;*/
+    line-height: 18px !important;
+}
+
+#searchtext:focus
+{
+    border-color: #000;
+}
+
+#searchtext.disabled
+{
+    background-color: #efefef;
+}
+
+/* DASHBOARD */
+#ez-version
+{
+    color: #E24602;
+}
+
+.content-dashboard .box-header
+{
+     background: transparent url(../../images/logo-sprite-43.png) no-repeat right -48px;/* url('/design/admin2/images/2/welcome.png') no-repeat scroll right bottom;*/
+     padding: 35px 0 0;
+}
+
+.content-dashboard .box-header h1
+{
+     visibility: hidden;
+}
+
+.dashboard-item
+{
+    margin-top: 2em;
+}
+
+/* MISC */
+table.list th, table.special th
+{
+    background: #FAFAFA url(../../images/h-sprite-43.png) repeat-x 0 -193px;/*url('../../images/2/gradient-to-darker.png') repeat-x left bottom scroll;*/
+}
+
+#leftmenu-design ul
+{
+    color: #333;
+}
+
+.settings .current
+{
+    font-weight: bold;
+}
+
+/* FOOTER */
+
+#footer
+{
+    border-top: 1px solid #999;
+    background: #FEFEFE url(../../images/h-sprite-43.png) repeat-x 0 -10474px;/*url('../../images/2/gradient-to-light.png') repeat-x left top scroll;*/
+}
+
