@@ -194,7 +194,7 @@ p.versions
     border-bottom-right-radius: 3px;
     border: 1px solid #CCCCCC;
     border-top: 0 none;
-    background: #f5f5f5 url(../../images/2/gradient-to-darker.png) repeat-x center bottom scroll;
+    background: #f5f5f5 url(../../images/h-sprite-43.png) repeat-x 0 -197px;/*url('../../images/2/gradient-to-darker.png') repeat-x center bottom scroll;*/
 }
 p.versions a
 {
@@ -211,7 +211,7 @@ p.table-preferences
     border-bottom-right-radius: 3px;
     border: 1px solid #CCCCCC;
     border-top: 0 none;
-    background: #D1DFE9 url(../../images/2/gradient-to-darker.png) repeat-x center bottom scroll;
+    background: #D1DFE9 url(../../images/h-sprite-43.png) repeat-x 0 -197px;/*url('../../images/2/gradient-to-darker.png') repeat-x center bottom scroll;*/
 }
 
 p.table-preferences :first-child
@@ -265,7 +265,7 @@ input.defaultbutton
 input.button-disabled
 {
     color: #888;
-    background-image: url(../../images/2/gradient-btn-disabled.png);
+    background: url(../../images/h-sprite-43.png) repeat-x 0 -236px;/*background-image: url(../../images/2/gradient-btn-disabled.png);*/
 }
 
 /* SEARCH */

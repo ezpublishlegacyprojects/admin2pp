@@ -376,7 +376,7 @@ div#contentstructure ul#content_tree_menu ul li
 
 div#contentstructure ul#content_tree_menu ul li.lastli
 {
-    background:url(../images/h-sprite-43.png) no-repeat 1px -10280px;/*background-image: url(../images/bg_content_tree_li_last.gif);*/
+    background:url(../images/h-sprite-43.png) no-repeat 1px -9904px;/*background-image: url(../images/bg_content_tree_li_last.gif);*/
     padding-bottom: 2px;
 }
 
@@ -543,9 +543,9 @@ div.popupmenu a
 
 div.popupmenu a.more
 {
-    background-image: url(../images/more-arrow.gif);
+    background:url(../images/h-sprite-43.png) no-repeat right -10358px;/*background-image: url(../images/more-arrow.gif);
     background-repeat: no-repeat;
-    background-position: right center;
+    background-position: right center;*/
 }
 
 div.popupmenu a.menu-item-disabled
@@ -779,14 +779,14 @@ a.controlbar-top-full-screen-toggle
     width: 16px;
     display: block;
     text-decoration: none;
-    background-image: url('../images/view-fullscreen.png');
+    background:url(../images/v-sprite-43.png) no-repeat -84px 0;/*background-image: url('../images/view-fullscreen.png');
     background-repeat: no-repeat;
-    background-position: left top;
+    background-position: left top;*/
 }
 
 div#page.main-column-only a.controlbar-top-full-screen-toggle
 {
-    background-image: url('../images/2/exit-fullscreen.png');
+    background:url(../images/v-sprite-43.png) no-repeat -100px 0;/*background-image: url('../images/2/exit-fullscreen.png');*/
 }
 
 

@@ -393,7 +393,7 @@ div.message-feedback
 
 div.message-feedback h2
 {
-    background-image: url(../images/message-feedback.gif);
+    background:url(../images/h-sprite-43.png) no-repeat 0 -10407px;/*background-image: url(../images/message-feedback.gif);*/
 }
 
 div.message-warning
@@ -403,7 +403,7 @@ div.message-warning
 
 div.message-warning h2
 {
-    background-image: url(../images/message-warning.gif);
+    background:url(../images/h-sprite-43.png) no-repeat 0 -10440px;/*background-image: url(../images/message-warning.gif);*/
 }
 
 div.message-error
@@ -413,7 +413,7 @@ div.message-error
 
 div.message-error h2
 {
-    background-image: url(../images/message-error.gif);
+    background:url(../images/h-sprite-43.png) no-repeat 0 -10373px;/*background-image: url(../images/message-error.gif);*/
 }
 
 div.message-feedback span.time, div.message-warning span.time, div.message-error span.time
