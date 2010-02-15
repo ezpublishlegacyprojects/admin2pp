@@ -1,4 +1,4 @@
-<?php
+<?php /*
 #
 # $Id$
 # $HeadURL$
@@ -17,4 +17,5 @@ Images[]=up-16x16-grey.png
 Images[]=toggle-button-16x16.gif
 Images[]=trash-icon-16x16.gif
 Images[]=content_tree-busy.gif
-?>
+
+*/ ?>

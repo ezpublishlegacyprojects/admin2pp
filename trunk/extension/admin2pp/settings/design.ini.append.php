@@ -1,4 +1,4 @@
-<?php
+<?php /*
 #
 # $Id$
 # $HeadURL$
@@ -17,4 +17,4 @@ BackendJavaScriptList[]=lib/ezjslibimagepreloader.js
 BackendJavaScriptList[]=leftmenu_widthcontrol.js
 BackendJavaScriptList[]=popupmenu/ezpopupmenu.js
 
-?>
+*/ ?>
