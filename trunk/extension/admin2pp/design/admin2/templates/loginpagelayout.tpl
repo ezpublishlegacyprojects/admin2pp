@@ -67,7 +67,8 @@ jQuery(window).load(function(){* when everything is loaded we can start preloadi
 {def $iconInfo = icon_info('class')
      $classIconsSize = ezini( 'TreeMenu', 'ClassIconsSize', 'contentstructuremenu.ini' )
      $images_list = ezini( 'PreloadSettings', 'Images', 'admin2pp.ini' )
-     $translation_list = fetch( 'content', 'translation_list' )}
+     $translation_list = fetch( 'content', 'translation_list' )
+     $non_standard_images = ezini( 'PreloadSettings', 'NonStandardImages', 'admin2pp.ini' )}
 
     var wwwDirPrefixIcon = "{ezsys('wwwdir')}/{$iconInfo.theme_path}/{$iconInfo.size_path_list[$classIconsSize]}/";
     var wwwDirPrefixNormal = "{ezsys('wwwdir')}/{$iconInfo.theme_path}/{$iconInfo.size_path_list['normal']}/";
@@ -87,6 +88,10 @@ jQuery(window).load(function(){* when everything is loaded we can start preloadi
     {foreach $iconInfo.icons as $class => $icon}{*
         *}iconsList.push(wwwDirPrefixIcon + "{$icon}");
     iconsList.push(wwwDirPrefixNormal + "{$icon}");
+    {/foreach}
+
+    {foreach $non_standard_images as $img}{*
+        *}iconsList.push({$img|ezdesign()});
     {/foreach}
 
     ezjslib_preloadImageList( iconsList );
