@@ -136,6 +136,11 @@ table.list th, table.list td, table.special th, table.special td
     vertical-align: top;
 }
 
+table.list th, table.special th /* special rules to avoid size issue in Chrome and background issue */
+{
+    padding:0 0.25em;
+}
+
 /* 'not available rate' */
 table.list td.na-rate, table.special td.na-rate
 {
