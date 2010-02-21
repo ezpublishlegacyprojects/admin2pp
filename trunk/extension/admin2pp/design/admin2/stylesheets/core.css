@@ -420,7 +420,7 @@ div.message-error
 
 div.message-error h2
 {
-    background:url(../images/v-sprite-43.png) no-repeat -83px -74pxpx;/*background-image: url(../images/message-error.gif);*/
+    background:url(../images/v-sprite-43.png) no-repeat -83px -74px;/*background-image: url(../images/message-error.gif);*/
 }
 
 div.message-feedback span.time, div.message-warning span.time, div.message-error span.time
