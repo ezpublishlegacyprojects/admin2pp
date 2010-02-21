@@ -1,0 +1,25 @@
+<!DOCTYPE TS><TS>
+<!--
+  $Id$
+  $HeadURL$
+-->
+<context>
+    <name>admin2pp/calendar</name>
+    <message>
+        <source>Calendar</source>
+        <translation>Calendrier</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Suivant</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Précédent</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Aujourd'hui</translation>
+    </message>
+</context>
+</TS>

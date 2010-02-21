@@ -1,0 +1,21 @@
+/**
+ * $Id$
+ * $HeadURL$
+ */
+
+div.date button
+{
+color: #fff;
+background: #D1DFE9 url(../images/h-sprite-43.png) repeat-x left -31px;/*url(../../images/2/gradient-blue.png) repeat-x center bottom scroll;*/
+border: 1px solid #dedede;
+border-color: #aaa #ccc #ccc #aaa;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+margin:0 0 0 10px;
+}
+
+.ui-widget
+{
+font-size:0.9em;
+}
