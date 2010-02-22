@@ -375,13 +375,13 @@ div#contentstructure ul#content_tree_menu ul li
     padding-top: 0;
     padding-left: 20px;
     padding-bottom: 4px;
-    background:url(../images/h-sprite-43.png) 1px -280px;/*background-image: url(../images/bg_content_tree_li.gif);*/
+    background:url(../images/h-sprite-43.png) 1px -280px;/*background-image: url(../images/bg_content_tree_li.png:);*/
     background-repeat: no-repeat;
 }
 
 div#contentstructure ul#content_tree_menu ul li.lastli
 {
-    background:url(../images/h-sprite-43.png) no-repeat 1px -9904px;/*background-image: url(../images/bg_content_tree_li_last.gif);*/
+    background:url(../images/h-sprite-43.png) no-repeat 1px -9904px;/*background-position: left -9990px;*/
     padding-bottom: 2px;
 }
 
@@ -453,22 +453,22 @@ div#contentstructure ul#content_tree_menu ul a.openclose-open, div#contentstruct
     top: 0;
     width: 16px;
     height: 16px;
-    background: transparent url(../images/v-sprite-43.png) no-repeat 0 0;/*url( '../images/content_tree-open.gif' ) no-repeat center center scroll;*/
+    background: transparent url(../images/v-sprite-43.png) no-repeat 0 0;/*url( '../images/content_tree-icons.png' ) no-repeat center 0px scroll;*/
 }
 
 div#contentstructure ul#content_tree_menu ul a.openclose-close
 {
-    background: transparent url(../images/v-sprite-43.png) no-repeat -21px 0;/*background-image: url( '../images/content_tree-close.gif' );*/
+    background: transparent url(../images/v-sprite-43.png) no-repeat -21px 0;/* background-position: center -16px; */
 }
 
 div#contentstructure ul#content_tree_menu ul a.openclose-error
 {
-    background: transparent url(../images/v-sprite-43.png) no-repeat 42px 0;/*background-image: url( '../images/content_tree-busy.gif' );*/
+    background: transparent url(../images/v-sprite-43.png) no-repeat 42px 0;/*background-position: center -32px;*/
 }
 
 div#contentstructure ul#content_tree_menu ul a.openclose-busy
 {
-    background: transparent url(../images/v-sprite-43.png) no-repeat 0 -16px;/*background-image: url( '../images/content_tree-error.gif' );*/
+    background: transparent url(../images/v-sprite-43.png) no-repeat 0 -16px;/*background-position: center -48px;*/
     cursor: progress;
 }
 
@@ -767,6 +767,19 @@ input.button, input.defaultbutton, input.button-disabled
 	color: #888;
 }
 
+.searchbuttonfield
+{
+    height: 17px;
+    position: absolute;
+    right: 8px;
+    top: 22px;
+    width: 17px;
+}
+
+.searchbuttonfield:hover
+{
+    cursor: pointer;
+}
 
 /* FULL EDIT VIEW ( main-column-only class toggle ) */
 
