@@ -22,4 +22,15 @@
         <translation>Aujourd'hui</translation>
     </message>
 </context>
+<context>
+    <name>admin2pp/preview</name>
+    <message>
+        <source>Loading preview...</source>
+        <translation>Chargement de la prévisualisation...</translation>
+    </message>
+    <message>
+        <source>Loading...</source>
+        <translation>Chargement...</translation>
+    </message>
+</context>
 </TS>

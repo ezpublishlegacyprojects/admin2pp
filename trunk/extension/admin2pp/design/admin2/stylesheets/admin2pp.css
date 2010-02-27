@@ -19,3 +19,9 @@ margin:0 0 0 10px;
 {
 font-size:0.9em;
 }
+
+#preview-dialog p.loader
+{
+padding-top:10%;
+text-align:center;
+}
