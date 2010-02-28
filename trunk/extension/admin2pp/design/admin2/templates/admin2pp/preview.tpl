@@ -8,7 +8,12 @@
 <script type="text/javascript">
 {def $width  = ezpreference( 'admin2pp_preview_width' )
      $height = ezpreference( 'admin2pp_preview_height' )}
-var admin2ppPreviewWidth  = {cond( $width|ne(''), $width, ezini( 'PreviewSettings', 'PreviewWidth', 'admin2pp.ini',, true() ) )};
-var admin2ppPreviewHeight = {cond( $height|ne(''), $height, ezini( 'PreviewSettings', 'PreviewHeight', 'admin2pp.ini',, true() ) )};
+jQuery(document).ready(function()
+{ldelim}
+    var previewDialog = new admin2ppPreviewDialog( '#preview-dialog' );
+    previewDialog.previewWidth = {cond( $width|ne(''), $width, ezini( 'PreviewSettings', 'PreviewWidth', 'admin2pp.ini',, true() ) )};
+    previewDialog.previewHeight = {cond( $height|ne(''), $height, ezini( 'PreviewSettings', 'PreviewHeight', 'admin2pp.ini',, true() ) )};
+    previewDialog.init();
+{rdelim});
 {undef $width $height}
 </script>
