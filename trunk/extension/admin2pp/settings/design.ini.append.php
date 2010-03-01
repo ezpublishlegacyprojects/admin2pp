@@ -20,5 +20,6 @@ BackendJavaScriptList[]=node_tabs.js
 BackendJavaScriptList[]=ezajaxsubitems_sortdd.js
 BackendJavaScriptList[]=ezajaxrelations_jquery.js
 BackendJavaScriptList[]=admin2pp_preview.js
+BackendJavaScriptList[]=admin2pp_dashboard.js
 
 */ ?>

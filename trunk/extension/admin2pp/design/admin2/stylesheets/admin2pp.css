@@ -25,3 +25,47 @@ font-size:0.9em;
 padding-top:10%;
 text-align:center;
 }
+
+.ui-sortable-placeholder
+{
+border: 1px dotted black;
+visibility: visible !important;
+height: 50px !important;
+}
+.ui-sortable-placeholder *
+{
+visibility: hidden;
+}
+
+.dashboard-item
+{
+padding:0.2em;
+}
+.dashboard-item h2
+{
+margin-top:0;
+padding:3px 5px;
+cursor:move;
+}
+.dashboard-item table
+{
+margin:1em 4px 4px 4px;
+width:auto;
+}
+.dashboard-item p
+{
+margin:0.5em;
+}
+.dashboard-item h2
+{
+font-size:1.3em;
+}
+.content-dashboard .left, .content-dashboard .right
+{
+min-height:50px;
+padding-bottom:20px;
+}
+a.ui-dialog-titlebar-close
+{
+float:right;
+}
