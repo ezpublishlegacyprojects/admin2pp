@@ -55,13 +55,11 @@ admin2ppPreviewDialog.prototype =
                                                                },
                                                         resizeStop: function( evt, ui )
                                                                     {
-                                                                        var width = ui.size.width, height = ui.size.height, url = '';
+                                                                        var width = ui.size.width, height = ui.size.height;
                                                                         instance.previewWidth = width;
                                                                         instance.previewHeight = height;
-                                                                        url = jQuery.ez.url.replace( 'ezjscore/', 'user/preferences/' ) + 'set_and_exit/admin2pp_preview_width/' + width;
-                                                                        jQuery.post( url, {}, function(){} );
-                                                                        url = jQuery.ez.url.replace( 'ezjscore/', 'user/preferences/' ) + 'set_and_exit/admin2pp_preview_height/' + height;
-                                                                        jQuery.post( url, {}, function(){} );
+                                                                        admin2ppAjaxSavePreference( 'admin2pp_preview_width', width );
+                                                                        admin2ppAjaxSavePreference( 'admin2pp_preview_height', height );
                                                                     }
                                                       });
              jQuery( '#menu-view' ).click(function( evt )
