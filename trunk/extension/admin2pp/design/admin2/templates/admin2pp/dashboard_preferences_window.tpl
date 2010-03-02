@@ -20,17 +20,17 @@
                 {/if}
             {/foreach}
         </ul>
-        <div class="ui-widget" id="admin2pp_all_choosen"{cond( $all_active|not(), ' style="display:none;"', '' )}>
+        <div id="admin2pp_all_choosen"{cond( $all_active|not(), ' style="display:none;"', '' )}>
             <div class="ui-state-highlight ui-corner-all"> 
                 <p>
                     <span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-info"></span>
-                    {'All available blocks are in your dashboard'|i18n(' admin2pp/dashboard' )}
+                    {'All available blocks are already in your dashboard'|i18n( 'admin2pp/dashboard' )}
                 </p>
             </div>
         </div>
 
         <p class="button-bar"{cond( $all_active, ' style="display:none;"', '' )}>
-            <input type="submit" class="button" id="admin2pp-db-save-button" name="SaveChangeButton" value="{'Save settings'|i18n( 'admin2pp/dashboard' )}" />
+            <input type="submit" class="button" id="admin2pp-db-save-button" name="SaveChangeButton" value="{'Add checked items'|i18n( 'admin2pp/dashboard' )}" />
         </p>
         {undef $available_blocks $blocks_name $all_active}
     </form>

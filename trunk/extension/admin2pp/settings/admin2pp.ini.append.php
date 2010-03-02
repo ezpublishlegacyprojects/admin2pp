@@ -32,7 +32,7 @@ PreviewHeight=300
 BlockNames[]
 BlockNames[drafts]=My drafts
 BlockNames[latest_content]=My latest content
-BlockNames[all_latest_content]=All latest
+BlockNames[all_latest_content]=All latest content
 BlockNames[pending_list]=My pending items
 BlockNames[maintenance]=Software update and Maintenance
 

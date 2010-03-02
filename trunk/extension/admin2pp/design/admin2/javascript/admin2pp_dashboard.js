@@ -115,10 +115,7 @@ admin2ppDashboardBlocks.prototype =
                                                                                                                 });
                                                                      var prefs = stateLeft + '|' + stateRight;
                                                                      form.attr( 'action', form.attr( 'action' ) + "/" + prefs );
-                                                                     alert(form.attr('action'));
                                                                      return true;
                                                                  });
                  }
-}
-
-
+};
