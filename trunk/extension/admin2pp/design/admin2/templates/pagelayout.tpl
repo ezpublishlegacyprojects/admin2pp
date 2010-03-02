@@ -181,6 +181,7 @@ document.getElementById('header-usermenu-logout').innerHTML += '<span class="hea
 // -->
 </script>
 {include uri="design:admin2pp/preview.tpl"}
+{include uri="design:admin2pp/dashboard_preferences_window.tpl"}
 
 {* This comment will be replaced with actual debug report (if debug is on). *}
 <!--DEBUG_REPORT-->

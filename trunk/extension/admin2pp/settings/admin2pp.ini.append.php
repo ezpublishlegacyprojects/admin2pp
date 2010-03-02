@@ -28,4 +28,12 @@ NonStandardImages[]=stylesheets/skins/o2k7/img/button_bg.png
 PreviewWidth=450
 PreviewHeight=300
 
+[DashboardSettings]
+BlockNames[]
+BlockNames[drafts]=My drafts
+BlockNames[latest_content]=My latest content
+BlockNames[all_latest_content]=All latest
+BlockNames[pending_list]=My pending items
+BlockNames[maintenance]=Software update and Maintenance
+
 */ ?>

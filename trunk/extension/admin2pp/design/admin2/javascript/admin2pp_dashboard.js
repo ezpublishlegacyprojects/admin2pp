@@ -35,7 +35,6 @@ admin2ppDashboardBlocks.saveState = function()
                                     };
 
 
-
 admin2ppDashboardBlocks.prototype = 
 {
 
@@ -55,9 +54,15 @@ admin2ppDashboardBlocks.prototype =
              closeButtons.click(function( evt )
                                 {
                                     var item = jQuery( this ).parents( 'div.dashboard-item' )
+                                    var blockIdentifier = item.attr( 'id' ).replace( admin2ppDashboardBlocks.ID_PREFIX, '' );
                                     item.addClass( admin2ppDashboardBlocks.REMOVED_CLASS );
                                     item.hide( 'highlight', {}, 200 );
                                     admin2ppDashboardBlocks.saveState();
+                                    // updating window settings
+                                    jQuery( '#admin2pp_all_choosen' ).hide();
+                                    jQuery( '#admin2pp_db_choice_' + blockIdentifier ).show();
+                                    jQuery( '#admin2pp-db-window p.button-bar' ).show();
+                                    jQuery( '#admin2pp_db_choice_' + blockIdentifier + ' input' ).removeAttr( 'disabled' );
                                 });
 
              closeButtons.mouseover(function( evt )
@@ -72,11 +77,48 @@ admin2ppDashboardBlocks.prototype =
 
          },
 
+
+    initSettings:function()
+                 {
+                     jQuery( '#admin2pp-db-settings' ).toggle();
+                     jQuery( '#admin2pp-db-window' ).dialog( { modal: true,
+                                                               height:400,
+                                                               autoOpen: false,
+                                                               width:500 } );
+                     jQuery( '#admin2pp-db-load' ).click(function()
+                                                         {
+                                                             jQuery( '#admin2pp-db-window' ).dialog( 'open' );
+                                                             return false;
+                                                         });
+                     jQuery( 'ul.settings-dashboard li input' ).change(function()
+                                                                    {
+                                                                        if ( this.checked )
+                                                                        {
+                                                                            jQuery( '#admin2pp-db-save-button' ).addClass( 'defaultbutton' );
+                                                                        }
+                                                                    });
+                     jQuery( '#admin2pp-db-window form' ).submit(function()
+                                                                 {
+                                                                     var stateLeft = admin2ppDashboardBlocks.getStateSide( 'div.block div.left div.dashboard-item' );
+                                                                     var stateRight = admin2ppDashboardBlocks.getStateSide( 'div.block div.right div.dashboard-item' );
+                                                                     var form = jQuery( this );
+                                                                     form.find( 'input:checkbox:checked' ).each(function()
+                                                                                                                {
+                                                                                                                    if ( stateLeft == '' )
+                                                                                                                    {
+                                                                                                                        stateLeft = jQuery( this ).val(); 
+                                                                                                                    }
+                                                                                                                    else
+                                                                                                                    {
+                                                                                                                        stateLeft = jQuery( this ).val() + "," + stateLeft; 
+                                                                                                                    }
+                                                                                                                });
+                                                                     var prefs = stateLeft + '|' + stateRight;
+                                                                     form.attr( 'action', form.attr( 'action' ) + "/" + prefs );
+                                                                     alert(form.attr('action'));
+                                                                     return true;
+                                                                 });
+                 }
 }
 
 
-jQuery(document).ready(function()
-{
-    var dashboard = new admin2ppDashboardBlocks();
-    dashboard.init();
-});

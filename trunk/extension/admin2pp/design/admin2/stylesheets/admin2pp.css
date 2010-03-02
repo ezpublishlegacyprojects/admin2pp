@@ -69,3 +69,24 @@ a.ui-dialog-titlebar-close
 {
 float:right;
 }
+ul.settings-dashboard
+{
+list-style-type:none;
+}
+ul.settings-dashboard label
+{
+display:inline;
+}
+#admin2pp_all_choosen
+{
+width:80%;
+margin:10px auto;
+}
+.settings-dashboard li.active
+{
+display:none;
+}
+#admin2pp-db-window p.button-bar
+{
+margin-top:20px;
+}

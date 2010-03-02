@@ -105,7 +105,7 @@ admin2ppPreviewDialog.prototype =
                           p.dialog( 'open' );
                       }
 
-};
+}
 
 
 

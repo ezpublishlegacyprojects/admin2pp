@@ -16,8 +16,8 @@
 {def $right_blocks = array()}
 
 <div class="left">
-{set $blocks = fetch( 'admin2pp', 'dashboard_blocks' )}
-{foreach $blocks as $block sequence array( 'left', 'right' ) as $position}
+{def $user_blocks = fetch( 'admin2pp', 'dashboard_blocks', hash( 'active_only', true() ) )}
+{foreach $user_blocks as $block sequence array( 'left', 'right' ) as $position}
   
   {if and( $block.identifier, $position|eq('left') )}
   <div class="dashboard-item" id="admin2pp_db_{$block.identifier}">
@@ -50,3 +50,14 @@
 {* DESIGN: Content END *}</div></div></div></div></div></div>
 
 </div>
+<script type="text/javascript">
+jQuery(document).ready(function()
+{ldelim}
+
+    var dashboard = new admin2ppDashboardBlocks();
+    dashboard.init();
+    dashboard.initSettings();
+
+{rdelim});
+</script>
+

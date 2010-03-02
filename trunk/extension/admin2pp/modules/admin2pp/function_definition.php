@@ -11,7 +11,10 @@ $FunctionList['dashboard_blocks'] = array( 'name' => 'dashboard_blocks',
                                            'call_method' => array( 'class' => 'admin2ppFunctionCollection',
                                                                    'method' => 'fetchDashboardBlocks' ),
                                            'parameter_type' => 'standard',
-                                           'parameters' => array() );
+                                           'parameters' => array( array( 'name' => 'active_only',
+                                                                         'type' => 'boolean',
+                                                                         'required' => false,
+                                                                         'default' => true ) ) );
 
 
 ?>
