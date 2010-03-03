@@ -25,6 +25,15 @@ font-size:0.9em;
 padding-top:10%;
 text-align:center;
 }
+#preview-dialog label, #preview-dialog h6
+{
+font-weight:bold;
+font-size:1.1em;
+background:#F5F5F5;
+color:#222;
+padding:3px 0;
+margin-bottom:4px;
+}
 
 .ui-sortable-placeholder
 {
