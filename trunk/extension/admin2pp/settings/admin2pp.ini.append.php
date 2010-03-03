@@ -30,10 +30,14 @@ PreviewHeight=300
 
 [DashboardSettings]
 BlockNames[]
+# name of default blocks
 BlockNames[drafts]=My drafts
 BlockNames[latest_content]=My latest content
 BlockNames[all_latest_content]=All latest content
 BlockNames[pending_list]=My pending items
 BlockNames[maintenance]=Software update and Maintenance
+
+# name of additional blocks
+BlockNames[advanced_search]=Advanced search form
 
 */ ?>

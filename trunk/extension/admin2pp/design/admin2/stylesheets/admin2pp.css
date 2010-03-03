@@ -99,3 +99,28 @@ display:none;
 {
 margin-top:20px;
 }
+
+/* advanced search dashboard block */
+.dashboard-advanced-search
+{
+margin-top:1em;
+}
+.dashboard-item .semi
+{
+float:left;
+width:49%;
+}
+.dashboard-item .semi
+{
+padding-bottom:10px;
+}
+
+.dashboard-item .semi input
+{
+width:95%;
+}
+.dashboard-advanced-search .button-bar
+{
+text-align:center;
+margin-bottom:1em;
+}

@@ -79,60 +79,63 @@ class admin2ppFunctionCollection
     function fetchDashboardBlocks( $activeOnly = true )
     {
         $userPrefs = eZPreferences::value( 'admin2pp_dashboard_blocks' );
+        $orderedBlocks = array();
+        $identifierIndex = array();
+        $ini = eZINI::instance( 'dashboard.ini' );
 
         $tpl = eZTemplate::factory();
         if ( ( !$userPrefs || strpos( $userPrefs, '|' ) === false ) && $tpl->hasVariable( 'blocks' ) )
         {
             eZDebug::writeDebug( 'No admin2pp_dashboard_blocks preferences defined' );
-            $blocks = $tpl->variable( 'blocks' );
-            foreach( $blocks as $k => $b )
+            $orderedBlocks = $tpl->variable( 'blocks' );
+            foreach( $orderedBlocks as $k => $b )
             {
-                $blocks[$k]['active'] = true;
+                $orderedBlocks[$k]['active'] = true;
+                $identifierIndex[$orderedBlocks[$k]['identifier']] = $orderedBlocks[$k]['identifier'];
             }
-            return array( 'result' => $blocks );
         }
         elseif ( !$userPrefs || strpos( $userPrefs, '|' ) === false )
         {
             eZDebug::writeError( 'fetch( admin2pp, dashboard_blocks ) not called on content/dashboard' );
             return array( 'result' => false );
         }
-
-        list( $userPrefsLeft, $userPrefsRight ) = explode( '|', $userPrefs );
-        $ini = eZINI::instance( 'dashboard.ini' );
-        $currentUser = eZUser::currentUser();
-        $leftBlocks = explode( ',', $userPrefsLeft );
-        $rightBlocks = explode( ',', $userPrefsRight );
-        $dashboardBlocks = self::mergeBlocks( $leftBlocks, $rightBlocks );
-        $orderedBlocks = array();
-        $identifierIndex = array();
-
-        foreach( $dashboardBlocks as $blockIdentifier )
+        elseif ( $userPrefs )
         {
-            if ( $blockIdentifier === false )
+            list( $userPrefsLeft, $userPrefsRight ) = explode( '|', $userPrefs );
+            $currentUser = eZUser::currentUser();
+            $leftBlocks = explode( ',', $userPrefsLeft );
+            $rightBlocks = explode( ',', $userPrefsRight );
+            $dashboardBlocks = self::mergeBlocks( $leftBlocks, $rightBlocks );
+
+            foreach( $dashboardBlocks as $blockIdentifier )
             {
-                $orderedBlocks[] = array( 'identifier' => false );
-            }
-            else
-            {
-                $blockGroupName = 'DashboardBlock_' . $blockIdentifier;
-                if ( !$ini->hasGroup( $blockGroupName ) )
-                    continue;
+                if ( $blockIdentifier === false )
+                {
+                    $orderedBlocks[] = array( 'identifier' => false );
+                }
+                else
+                {
+                    $blockGroupName = 'DashboardBlock_' . $blockIdentifier;
+                    if ( !$ini->hasGroup( $blockGroupName ) )
+                        continue;
 
-                $hasAccess = self::hasAccessToBlock( $blockIdentifier );
+                    $hasAccess = self::hasAccessToBlock( $blockIdentifier );
 
-                if ( $hasAccess === false )
-                    continue;
+                    if ( $hasAccess === false )
+                        continue;
 
-                $blockInfo = self::blockInfo( $blockIdentifier );
-                $blockInfo['active'] = true;
-                $orderedBlocks[] = $blockInfo;
-                $identifierIndex[$blockIdentifier] = $blockIdentifier;
+                    $blockInfo = self::blockInfo( $blockIdentifier );
+                    $blockInfo['active'] = true;
+                    $orderedBlocks[] = $blockInfo;
+                    $identifierIndex[$blockIdentifier] = $blockIdentifier;
+                }
             }
         }
 
         if ( !$activeOnly )
         {
-            $dashboardBlocks = $ini->variable( 'DashboardSettings', 'DashboardBlocks' );
+            $dashboardBlocks = array_merge( $ini->variable( 'DashboardSettings', 'DashboardBlocks' ),
+                                            $ini->variable( 'DashboardSettings', 'AdditionnalDashboardBlocks' ) );
             foreach( $dashboardBlocks as $blockIdentifier )
             {
                 if ( isset( $identifierIndex[$blockIdentifier] ) )
