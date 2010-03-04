@@ -22,7 +22,7 @@
 {def $class_list = fetch( 'class', 'list', hash( 'sort_by', array( 'name', true() ) ) )}
 <div class="line">
     <div class="semi">
-        <label for="ezcontent_advancesearch_class_attribute_id">{'Class'|i18n( 'design/admin/content/search' )}</label>
+        <label for="ezcontent_advancesearch_class_id">{'Class'|i18n( 'design/admin/content/search' )}</label>
         <select id="ezcontent_advancesearch_class_id" name="SearchContentClassID">
             <option value="-1">{'Any class'|i18n( 'design/admin/content/search' )}</option>
             {foreach $class_list as $class}
@@ -35,6 +35,7 @@
         <select id="ezcontent_advancesearch_class_attribute_id" name="SearchContentClassAttributeID" disabled="disabled">
             <option value="-1">{'Any attribute'|i18n( 'design/admin/content/search' )}</option>
         </select>
+        <img src={'admin2pp-loader-small.gif'|ezimage} id="admin2pp-attribute-loader" alt="{'Loading...'|i18n( 'admin2pp/dashboard' )}" style="display:none;" />
     </div>
 </div>
 {undef $class_list}
@@ -69,4 +70,36 @@
 </div>
 
 </form>
+<script type="text/javascript">
+{literal}
+jQuery( '#ezcontent_advancesearch_class_id' ).change(function()
+{
+    var classSelect = jQuery( this );
+    var attrSelect = jQuery( '#ezcontent_advancesearch_class_attribute_id' );
+    if ( classSelect.val() != "-1" )
+    {
+        jQuery( '#admin2pp-attribute-loader' ).toggle();
+        jQuery.ez( 'admin2ppajax::attributes::' + classSelect.val(),
+                   false,
+                   function( data )
+                   {
+                        if ( !data.error_text && data.content )
+                        {
+                            var attrSelect = jQuery( '#ezcontent_advancesearch_class_attribute_id' );
+                            attrSelect.append( data.content );
+                            attrSelect.removeAttr( 'disabled' );
+                            jQuery( '#admin2pp-attribute-loader' ).toggle();
+                            attrSelect.parent().removeClass( 'inactive' );
+                        }
+                   });
+    }
+    else
+    {
+        attrSelect.parent().addClass( 'inactive' );
+        attrSelect.attr( 'disabled', 'disabled' );
+        attrSelect.find( 'option[value!="-1"]' ).remove();
+    }
+});
+{/literal}
+</script>
 {/cache-block}

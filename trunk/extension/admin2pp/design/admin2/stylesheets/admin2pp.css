@@ -104,6 +104,7 @@ margin-top:20px;
 .dashboard-advanced-search
 {
 margin-top:1em;
+padding:5px;
 }
 .dashboard-item .semi
 {
@@ -112,15 +113,51 @@ width:49%;
 }
 .dashboard-item .semi
 {
-padding-bottom:10px;
+padding-bottom:5px;
 }
-
+.dashboard-item .inactive label
+{
+color:#888;
+}
 .dashboard-item .semi input
 {
-width:95%;
+width:90%;
+border: 1px solid #666;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+line-height: 18px !important;
 }
 .dashboard-advanced-search .button-bar
 {
 text-align:center;
-margin-bottom:1em;
+}
+
+/* improved textarea, input and fielset */
+#searchtext:focus, .dashboard-item .semi input:focus,
+input.halfbox:focus, textarea.halfbox:focus,
+input.box:focus, textarea.box:focus,
+div.date input:focus, div.time input:focus
+{
+background-color:#fffec5;
+border: 1px solid #666;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+input.halfbox, textarea.halfbox,
+input.box, textarea.halfbox,
+div.date input, div.time input
+{
+border: 1px solid #666;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+line-height: 18px !important;
+}
+fieldset
+{
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
 }

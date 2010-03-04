@@ -17,6 +17,7 @@ Images[]=up-16x16-grey.png
 Images[]=toggle-button-16x16.gif
 Images[]=trash-icon-16x16.gif
 Images[]=admin2pp-loader.gif
+Images[]=admin2pp-loader-small.gif
 
 # images to preload that are not in images folder
 NonStandardImages[]

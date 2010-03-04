@@ -25,6 +25,24 @@ class admin2ppAjaxFunctions extends ezjscServerFunctions
     }
 
 
+    public static function attributes( $args )
+    {
+        if ( !isset( $args[0] ) )
+        {
+            return "";
+        }
+        $contentClassID = $args[0];
+        $attributes = eZContentClassAttribute::fetchListByClassID( $contentClassID );
+        if ( !$attributes )
+        {
+            return "";
+        }
+        $tpl = eZTemplate::factory();
+        $tpl->setVariable( 'attributes', $attributes );
+        return $tpl->fetch( 'design:admin2ppajax/attributes.tpl' );
+    }
+
+
 }
 
 ?>
