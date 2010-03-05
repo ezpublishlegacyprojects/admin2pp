@@ -16,9 +16,9 @@ body /* These becomes the initial settings for most other elements */
     padding: 0;
 }
 
-/* HEADERS */
+/* HEADINGS */
 
-h1, h2, h3, h4, h5, h6
+h1, h2, h3, h4, h5, h6 /* Set general styles for all headings; some may be overridden later */
 {
     font-family: Helvetica, Arial, sans-serif;
     margin: 1em 0 0.2em 0;
@@ -140,14 +140,6 @@ table.list th, table.special th /* special rules to avoid size issue in Chrome a
     padding:0 0.25em;
 }
 
-/* 'not available rate' */
-table.list td.na-rate, table.special td.na-rate
-{
-    text-align: right;
-    font-style: italic;
-    color: #C0C0C0;
-}
-
 table.list th, table.special th
 {
     border-top-width: 2px;
@@ -159,6 +151,19 @@ table.list td
 {
     border-top: 1px solid #f0f0f0;
     font-weight: normal;
+}
+
+table.list tr:first-child td
+{
+   border-top: 0 none;
+}
+
+/* 'not available rate' */
+table.list td.na-rate, table.special td.na-rate
+{
+    text-align: right;
+    font-style: italic;
+    color: #C0C0C0;
 }
 
 table.list tr.bglight
