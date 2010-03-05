@@ -3,6 +3,7 @@
  * $HeadURL$
  */
 
+/* datepicker for ezdate and ezdatetime */
 div.date button
 {
 color: #fff;
@@ -20,6 +21,7 @@ margin:0 0 0 10px;
 font-size:0.9em;
 }
 
+/* AJAX preview */
 #preview-dialog p.loader
 {
 padding-top:10%;
@@ -35,6 +37,7 @@ padding:3px 0;
 margin-bottom:4px;
 }
 
+/* dashboard blocks */
 .ui-sortable-placeholder
 {
 border: 1px dotted black;
@@ -78,6 +81,8 @@ a.ui-dialog-titlebar-close
 {
 float:right;
 }
+
+/* dashboard settings */
 ul.settings-dashboard
 {
 list-style-type:none;
@@ -157,6 +162,25 @@ line-height: 18px !important;
 }
 fieldset
 {
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
+/* style on context menus */
+div.popupmenu
+{
+padding:2px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+background:#fcfcfc;
+}
+div.popupmenuheader
+{
+border: 1px solid #ccc;
+background: #006b9c url(ez43/images/ui-bg_inset-hard_20_006b9c_1x100.png) 50% 50% repeat-x; color: #ffffff;
+font-weight: bold;
 -moz-border-radius: 3px;
 -webkit-border-radius: 3px;
 border-radius: 3px;
