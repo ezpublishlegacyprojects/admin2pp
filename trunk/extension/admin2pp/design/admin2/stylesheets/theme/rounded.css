@@ -377,7 +377,7 @@ table.list th, table.special th
 
 
 /* YUI 2 calendar (uses #page to force override) */
-
+/* commenting YUI2 style as it's not used with admin2pp so that eZJSCore CSS packer removes this part
 #page .yui-calendar .calweekdaycell
 {
     padding: 0.15em;
@@ -386,5 +386,5 @@ table.list th, table.special th
 #page .yui-calcontainer
 {
     border-color: #CCCCC3;
-}
+}*/
 
