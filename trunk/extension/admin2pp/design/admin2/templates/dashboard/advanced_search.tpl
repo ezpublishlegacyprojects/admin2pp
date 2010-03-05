@@ -35,7 +35,7 @@
         <select id="ezcontent_advancesearch_class_attribute_id" name="SearchContentClassAttributeID" disabled="disabled">
             <option value="-1">{'Any attribute'|i18n( 'design/admin/content/search' )}</option>
         </select>
-        <img src={'admin2pp-loader-small.gif'|ezimage} id="admin2pp-attribute-loader" alt="{'Loading...'|i18n( 'admin2pp/dashboard' )}" style="display:none;" />
+        <img src={'admin2pp-loader-small.gif'|ezimage} id="admin2pp-attribute-loader" alt="{'Loading...'|i18n( 'admin2pp/dashboard/advancedsearch' )}" style="display:none;" />
     </div>
 </div>
 {undef $class_list}
@@ -55,12 +55,12 @@
     <div class="semi">
         <label for="ezcontent_advancesearch_date">{"Published"|i18n( 'design/admin/content/search' )}:</label>
         <select id="ezcontent_advancesearch_date" name="SearchDate">
-            <option value="-1" {if eq( $search_date, -1 )}selected="selected"{/if}>{'Any time'|i18n( 'design/admin/content/search' )}</option>
-            <option value="1"  {if eq( $search_date,  1 )}selected="selected"{/if}>{'Last day'|i18n( 'design/admin/content/search' )}</option>
-            <option value="2"  {if eq( $search_date,  2 )}selected="selected"{/if}>{'Last week'|i18n( 'design/admin/content/search' )}</option>
-            <option value="3"  {if eq( $search_date,  3 )}selected="selected"{/if}>{'Last month'|i18n( 'design/admin/content/search' )}</option>
-            <option value="4"  {if eq( $search_date,  4 )}selected="selected"{/if}>{'Last three months'|i18n( 'design/admin/content/search' )}</option>
-            <option value="5"  {if eq( $search_date,  5 )}selected="selected"{/if}>{'Last year'|i18n( 'design/admin/content/search' )}</option>
+            <option value="-1" selected="selected">{'Any time'|i18n( 'design/admin/content/search' )}</option>
+            <option value="1">{'Last day'|i18n( 'design/admin/content/search' )}</option>
+            <option value="2">{'Last week'|i18n( 'design/admin/content/search' )}</option>
+            <option value="3">{'Last month'|i18n( 'design/admin/content/search' )}</option>
+            <option value="4">{'Last three months'|i18n( 'design/admin/content/search' )}</option>
+            <option value="5">{'Last year'|i18n( 'design/admin/content/search' )}</option>
         </select>
     </div>
 </div>

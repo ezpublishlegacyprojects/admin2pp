@@ -83,5 +83,20 @@
         <source>Software update and Maintenance</source>
         <translation>Mise à jour logiciel et maintenance</translation>
     </message>
+    <message>
+        <source>Advanced search form</source>
+        <translation>Formulaire de recherche avancée</translation>
+    </message>
+</context>
+<context>
+    <name>admin2pp/dashboard/advancedsearch</name>
+    <message>
+        <source>Advanced search form</source>
+        <translation>Formulaire de recherche avancée</translation>
+    </message>
+    <message>
+        <source>Loading...</source>
+        <translation>Chargement...</translation>
+    </message>
 </context>
 </TS>
