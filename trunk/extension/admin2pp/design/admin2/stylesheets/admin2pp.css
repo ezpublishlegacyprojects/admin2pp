@@ -142,7 +142,8 @@ text-align:center;
 #searchtext:focus, .dashboard-item .semi input:focus,
 input.halfbox:focus, textarea.halfbox:focus,
 input.box:focus, textarea.box:focus,
-div.date input:focus, div.time input:focus
+div.date input:focus, div.time input:focus,
+input.priority:focus
 {
 background-color:#fffec5;
 border: 1px solid #666;
@@ -152,7 +153,8 @@ border-radius: 3px;
 }
 input.halfbox, textarea.halfbox,
 input.box, textarea.halfbox,
-div.date input, div.time input
+div.date input, div.time input,
+input.priority
 {
 border: 1px solid #666;
 -moz-border-radius: 3px;
