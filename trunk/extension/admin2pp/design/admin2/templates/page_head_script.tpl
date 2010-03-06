@@ -5,7 +5,7 @@
 {/if}
 
 {if $load_javascript_list}
- {ezscript_load( ezini( 'JavaScriptSettings', 'BackendJavaScriptList', 'design.ini' )|append( 'ezjsc::jquery' )|append( 'ezjsc::jqueryio' )|append( 'admin2pp::jqueryui' ) )}
+ {ezscript_load( ezini( 'JavaScriptSettings', 'BackendJavaScriptList', 'design.ini' )|prepend( 'ezjsc::jquery', 'ezjsc::jqueryio', 'admin2pp::jqueryui' ) )}
 {else}
  {ezscript_load( array( 'ezjsc::jquery', 'ezjsc::jqueryio' ) )}
 {/if}
