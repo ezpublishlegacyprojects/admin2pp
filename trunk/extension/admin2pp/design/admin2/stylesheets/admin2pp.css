@@ -137,5 +137,19 @@ line-height: 18px !important;
 {
 text-align:center;
 }
-
+/* feed reader dashboard block */
+div.feed-reader-result h3
+{
+margin: 0.2em 0 0 1em;
+}
+p.waiting
+{
+text-align:center;
+font-style:italic;
+}
+p.waiting img
+{
+display:block;
+margin:10px auto;
+}
 

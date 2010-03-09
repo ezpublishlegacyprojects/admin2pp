@@ -59,8 +59,27 @@ class admin2ppFunctionCollection
         return $hasAccess;
     }
 
-    static function blockInfo( $blockIdentifier )
+    static function blockIdentifier( $identifier )
     {
+        if ( strpos( $identifier, '_iid-' ) !== false )
+        {
+            return preg_replace( '/_iid-[0-9_-]+/', '', $identifier );
+        }
+        return $identifier;
+    }
+
+    static function blockExists( $identifier )
+    {
+        $identifier = self::blockIdentifier( $identifier );
+        $ini = eZINI::instance( 'dashboard.ini' );
+        $blockGroupName = 'DashboardBlock_' . $identifier;
+        return $ini->hasGroup( $blockGroupName );
+    }
+
+    static function blockInfo( $identifier )
+    {
+        $fullIdentifier = $identifier;
+        $blockIdentifier = self::blockIdentifier( $identifier );
         $blockGroupName = 'DashboardBlock_' . $blockIdentifier;
         $ini = eZINI::instance( 'dashboard.ini' );
         $numberOfItems = null;
@@ -71,8 +90,14 @@ class admin2ppFunctionCollection
         if ( $ini->hasVariable( $blockGroupName, 'Template' ) )
             $template = $ini->variable( $blockGroupName, 'Template' );
 
+        $multiple = false;
+        if ( $ini->hasVariable( $blockGroupName, 'MultipleInstance' ) )
+            $multiple = ( $ini->variable( $blockGroupName, 'MultipleInstance' ) === 'true' );
+
         return array( 'identifier' => $blockIdentifier,
                       'template' => $template,
+                      'multiple' => $multiple,
+                      'full_identifier' => $fullIdentifier,
                       'number_of_items' => $numberOfItems );
     }
 
@@ -91,6 +116,7 @@ class admin2ppFunctionCollection
             foreach( $orderedBlocks as $k => $b )
             {
                 $orderedBlocks[$k]['active'] = true;
+                $orderedBlocks[$k]['multiple'] = false;
                 $identifierIndex[$orderedBlocks[$k]['identifier']] = $orderedBlocks[$k]['identifier'];
             }
         }
@@ -115,8 +141,7 @@ class admin2ppFunctionCollection
                 }
                 else
                 {
-                    $blockGroupName = 'DashboardBlock_' . $blockIdentifier;
-                    if ( !$ini->hasGroup( $blockGroupName ) )
+                    if ( !self::blockExists( $blockIdentifier ) )
                         continue;
 
                     $hasAccess = self::hasAccessToBlock( $blockIdentifier );
@@ -138,12 +163,12 @@ class admin2ppFunctionCollection
                                             $ini->variable( 'DashboardSettings', 'AdditionnalDashboardBlocks' ) );
             foreach( $dashboardBlocks as $blockIdentifier )
             {
-                if ( isset( $identifierIndex[$blockIdentifier] ) )
+                $blockInfo = self::blockInfo( $blockIdentifier );
+                if ( isset( $identifierIndex[$blockIdentifier] ) && !$blockInfo['multiple'] )
                 {
                     continue;
                 }
-                $blockGroupName = 'DashboardBlock_' . $blockIdentifier;
-                if ( !$ini->hasGroup( $blockGroupName ) )
+                if ( !self::blockExists( $blockIdentifier ) )
                     continue;
 
                 $hasAccess = self::hasAccessToBlock( $blockIdentifier );
@@ -151,7 +176,6 @@ class admin2ppFunctionCollection
                 if ( $hasAccess === false )
                     continue;
 
-                $blockInfo = self::blockInfo( $blockIdentifier );
                 $blockInfo['active'] = false;
                 $orderedBlocks[] = $blockInfo;
             }

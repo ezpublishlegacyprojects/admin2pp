@@ -104,13 +104,25 @@ admin2ppDashboardBlocks.prototype =
                                                                      var form = jQuery( this );
                                                                      form.find( 'input:checkbox:checked' ).each(function()
                                                                                                                 {
+                                                                                                                    var checkbox = jQuery( this );
+                                                                                                                    var blockIdentifier = checkbox.val();
+                                                                                                                    if ( checkbox.hasClass( 'multiple-block' ) )
+                                                                                                                    {
+                                                                                                                        var now = new Date();
+                                                                                                                        blockIdentifier += "_iid-" + now.getFullYear()
+                                                                                                                                            + "-" + (parseInt(now.getMonth()) + 1)
+                                                                                                                                            + "-" + now.getDay()
+                                                                                                                                            + "_" + now.getHours()
+                                                                                                                                            + "-" + now.getMinutes()
+                                                                                                                                            + "-" + now.getSeconds();
+                                                                                                                    }
                                                                                                                     if ( stateLeft == '' )
                                                                                                                     {
-                                                                                                                        stateLeft = jQuery( this ).val(); 
+                                                                                                                        stateLeft = blockIdentifier;
                                                                                                                     }
                                                                                                                     else
                                                                                                                     {
-                                                                                                                        stateLeft = jQuery( this ).val() + "," + stateLeft; 
+                                                                                                                        stateLeft = blockIdentifier + "," + stateLeft; 
                                                                                                                     }
                                                                                                                 });
                                                                      var prefs = stateLeft + '|' + stateRight;

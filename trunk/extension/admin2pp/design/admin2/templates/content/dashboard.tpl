@@ -20,7 +20,7 @@
 {foreach $user_blocks as $block sequence array( 'left', 'right' ) as $position}
   
   {if and( $block.identifier, $position|eq('left') )}
-  <div class="dashboard-item" id="admin2pp_db_{$block.identifier}">
+  <div class="dashboard-item" id="admin2pp_db_{cond( $block.multiple, $block.full_identifier, $block.identifier )}">
     {if $block.template}
         {include uri=concat( 'design:', $block.template )}
     {else}
@@ -29,7 +29,7 @@
   </div>
   {elseif $block.identifier}
 	{append-block variable=$right_blocks}
-	<div class="dashboard-item" id="admin2pp_db_{$block.identifier}">
+	<div class="dashboard-item" id="admin2pp_db_{cond( $block.multiple, $block.full_identifier, $block.identifier )}">
 	    {if $block.template}
 	        {include uri=concat( 'design:', $block.template )}
 	    {else}

@@ -11,3 +11,4 @@ function admin2ppAjaxSavePreference( name, value )
     var url = jQuery.ez.url.replace( 'ezjscore/', 'user/preferences/' ) + 'set_and_exit/' + name + '/' + value;
     jQuery.post( url, {}, function(){} );
 }
+
