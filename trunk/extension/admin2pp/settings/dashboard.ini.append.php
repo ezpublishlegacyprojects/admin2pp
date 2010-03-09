@@ -1,4 +1,8 @@
 <?php /*
+#
+# $Id$
+# $HeadURL$
+#
 
 [DashboardSettings]
 # AdditionnalDashboardBlocks contains a list of dashboard blocks
