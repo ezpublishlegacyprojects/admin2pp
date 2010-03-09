@@ -50,6 +50,7 @@ admin2ppDashboardBlocks.prototype =
              jQuery( '.column' ).disableSelection();
 
              var closeButtons = jQuery( 'div.dashboard-item h2 a.ui-dialog-titlebar-close' );
+             var actionButtons = jQuery( 'div.dashboard-item h2 a.ui-corner-all' );
 
              closeButtons.click(function( evt )
                                 {
@@ -65,15 +66,15 @@ admin2ppDashboardBlocks.prototype =
                                     jQuery( '#admin2pp_db_choice_' + blockIdentifier + ' input' ).removeAttr( 'disabled' );
                                 });
 
-             closeButtons.mouseover(function( evt )
-                                    {
-                                        jQuery( this ).addClass( 'ui-state-hover' );
-                                    });
+             actionButtons.mouseover(function( evt )
+                                     {
+                                         jQuery( this ).addClass( 'ui-state-hover' );
+                                     });
 
-             closeButtons.mouseout(function( evt )
-                                   {
-                                       jQuery( this ).removeClass( 'ui-state-hover' );
-                                   });
+             actionButtons.mouseout(function( evt )
+                                    {
+                                        jQuery( this ).removeClass( 'ui-state-hover' );
+                                    });
 
          },
 

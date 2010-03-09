@@ -44,18 +44,38 @@ class admin2ppAjaxFunctions extends ezjscServerFunctions
 
     public static function parse( $args )
     {
-        $result = array( 'title' => '', 'content' => '' );
+        $useCache = true;
         if ( !isset( $args[0] ) )
         {
             return '';
         }
         $blockID = $args[0];
+        if ( isset( $args[1] ) && $args[1] == 1 )
+        {
+            $useCache = false;
+        }
         $feedURL = eZPreferences::value( $blockID . '_feed_url' ); 
+        $ini = eZINI::instance( 'dashboard.ini' );
+        $siteINI = eZINI::instance();   
+        $cacheTTL = $ini->variable( 'DashboardBlock_feed_reader', 'CacheTTL' );
+        $cacheDir = $siteINI->variable( 'FileSettings', 'VarDir' )
+                    . '/'
+                    . $siteINI->variable( 'FileSettings', 'CacheDir' )
+                    . '/rss/';
+        $cacheKey = md5( $blockID . $feedURL ) . '.php';
+        $cache = new eZPHPCreator( $cacheDir, $cacheKey, '', array( 'clustering' => 'rss' ) );
+        if ( $useCache && $cache->canRestore( time() - $cacheTTL ) )
+        {
+            $values = $cache->restore( array( 'Content' => 'content' ) );
+            $cache->close();
+            return $values['Content'];
+        }
         if ( $feedURL === '' )
         {
             return '';
         }
         $tpl = eZTemplate::factory();
+        $feed = false;
         try
         {
             $feed = ezcFeed::parse( $feedURL );
@@ -65,7 +85,11 @@ class admin2ppAjaxFunctions extends ezjscServerFunctions
             $tpl->setVariable( 'error', $e->getMessage() );
         }
         $tpl->setVariable( 'feed', new admin2ppTemplateProxyObject( $feed ) );
-        return $tpl->fetch( 'design:admin2ppajax/feed_reader.tpl' );
+        $content = $tpl->fetch( 'design:admin2ppajax/feed_reader.tpl' );
+        $cache->addVariable( 'content', $content );
+        $cache->store();
+        $cache->close();
+        return $content;
     }
 
 }

@@ -77,6 +77,8 @@ font-size:1.3em;
 min-height:50px;
 padding-bottom:20px;
 }
+a.ui-dialog-titlebar-wrench,
+a.ui-dialog-titlebar-refresh,
 a.ui-dialog-titlebar-close
 {
 float:right;

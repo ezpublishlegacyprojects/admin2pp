@@ -2,8 +2,14 @@
  * $Id$
  * $HeadURL$
  *}
-{def $feed_url = ezpreference( concat( $block.full_identifier, '_feed_url' ) )}
-<h2>{'Feed reader'|i18n( 'admin2pp/dashboard/feedreader' )}<a href="#" class="ui-dialog-titlebar-close ui-corner-all"><span class="ui-icon ui-icon-wrench">{'Refresh'|i18n( 'admin2pp/dashboard/feedreader' )}</span></a><a href="#" class="ui-dialog-titlebar-close ui-corner-all"><span class="ui-icon ui-icon-refresh">close</span></a></h2>
+{def $feed_url = ezpreference( concat( $block.full_identifier, '_feed_url' ) )
+     $hash = $block.full_identifier|md5}
+<h2>{'Feed reader'|i18n( 'admin2pp/dashboard/feedreader' )}
+<a href="#" class="ui-dialog-titlebar-wrench ui-corner-all"><span class="ui-icon ui-icon-wrench">{'Refresh'|i18n( 'admin2pp/dashboard/feedreader' )}</span></a>
+{if $feed_url|ne( '' )}
+<a href="#" class="ui-dialog-titlebar-refresh ui-corner-all"><span class="ui-icon ui-icon-refresh">{'Configure'|i18n( 'admin2pp/dashboard/feedreader' )}</span></a>
+{/if}
+</h2>
 {if $feed_url|eq( '' )}
     <p><em>{'This feed reader is not configured.'|i18n( 'admin2pp/dashboard/feedreader' )}</em></p>
     <p><input type="submit" class="defaultbutton" value="{'Configure this feed reader'|i18n( 'admin2pp/dashboard/feedreader' )}" /></p>
@@ -12,22 +18,13 @@
 <img src={'admin2pp-loader.gif'|ezimage} alt="{'Loading...'|i18n( 'admin2pp/dashboard/feedreader' )}" />
 </p>
 <div id="content_{$block.full_identifier}" class="feed-reader-result"></div>
+{/if}
 <script type="text/javascript">
 jQuery(document).ready(function()
 {ldelim}
-    if ( jQuery( '#content_{$block.full_identifier}' ).html() == '' ) {* avoid AJAX reloading with dropping a feed reader block *}
-    {ldelim}
-        jQuery.ez( 'admin2ppajax::parse::{$block.full_identifier}',
-                   false,
-                   function( data )
-                   {ldelim}
-                       if ( data.content )
-                       {ldelim}
-                           jQuery( '#content_{$block.full_identifier}' ).html( data.content ); 
-                           jQuery( '#admin2pp_db_{$block.full_identifier} p.waiting' ).hide();
-                       {rdelim}
-                   {rdelim} );
-    {rdelim}
+var fr{$hash} = new admin2ppDashboardFeedReader( "{$block.full_identifier|wash( javascript )}" );
+fr{$hash}.init();
+
 {rdelim});
 </script>
-{/if}
+{undef $feed_url}

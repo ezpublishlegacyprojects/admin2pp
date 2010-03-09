@@ -17,5 +17,6 @@ PolicyList[]=content/read
 Priority=60
 MultipleInstance=true
 NumberOfItems=5
+CacheTTL=1800
 
 */ ?>
