@@ -15,7 +15,7 @@
                 {set $all_active = and( $all_active, $block.active )}
                 <li {cond( $block.active, ' class="active"', '' )} id="admin2pp_db_choice_{$block.identifier}">
                     <input type="checkbox"{cond( $block.multiple, ' class="multiple-block"', '' )} name="DashboardBlocks[]" id="admin2pp_db_choose_{$block.identifier}" value="{$block.identifier}"{cond( $block.active, ' disabled="disabled"', '' )} />
-                    <label for="admin2pp_db_choose_{$block.identifier}">{$blocks_name[$block.identifier]|i18n( 'admin2pp/dashboard' )}</label>
+                    <label for="admin2pp_db_choose_{$block.identifier}">{$blocks_name[$block.identifier]|d18n( 'admin2pp/dashboard' )}</label>
                 </li>
                 {/if}
             {/foreach}
