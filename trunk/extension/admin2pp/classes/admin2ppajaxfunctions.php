@@ -42,6 +42,32 @@ class admin2ppAjaxFunctions extends ezjscServerFunctions
         return $tpl->fetch( 'design:admin2ppajax/attributes.tpl' );
     }
 
+    public static function storeParse( $args )
+    {
+        $http = eZHTTPTool::instance();
+        if ( !isset( $args[0] ) )
+        {
+            return '';
+        }
+        $key = $args[0] . '_feed_url';
+        $value = '';
+        if ( $http->hasPostVariable( 'FeedURL' ) )
+        {
+            $value = $http->postVariable( 'FeedURL' );
+        }
+        if ( eZOperationHandler::operationIsAvailable( 'user_preferences' ) )
+        {
+            $operationResult = eZOperationHandler::execute( 'user',
+                                                            'preferences', array( 'key'    => $key,
+                                                                                  'value'  => $value ) );
+        }
+        else
+        {
+            eZPreferences::setValue( $key, $value );
+        }
+        return self::parse( $args );
+    }
+
     public static function parse( $args )
     {
         $useCache = true;
