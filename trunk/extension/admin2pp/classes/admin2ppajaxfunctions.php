@@ -88,7 +88,7 @@ class admin2ppAjaxFunctions extends ezjscServerFunctions
                     . '/'
                     . $siteINI->variable( 'FileSettings', 'CacheDir' )
                     . '/rss/';
-        $cacheKey = md5( $blockID . $feedURL ) . '.php';
+        $cacheKey = md5( $feedURL ) . '.php';
         $cache = new eZPHPCreator( $cacheDir, $cacheKey, '', array( 'clustering' => 'rss' ) );
         if ( $useCache && $cache->canRestore( time() - $cacheTTL ) )
         {
