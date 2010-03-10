@@ -87,6 +87,10 @@
         <source>Advanced search form</source>
         <translation>Formulaire de recherche avancée</translation>
     </message>
+    <message>
+        <source>Feed reader</source>
+        <translation>Lecteur de flux</translation>
+    </message>
 </context>
 <context>
     <name>admin2pp/dashboard/advancedsearch</name>
@@ -97,6 +101,45 @@
     <message>
         <source>Loading...</source>
         <translation>Chargement...</translation>
+    </message>
+</context>
+<context>
+    <name>admin2pp/dashboard/feedreader</name>
+    <message>
+        <source>Loading...</source>
+        <translation>Chargement...</translation>
+    </message>
+    <message>
+        <source>Feed reader</source>
+        <translation>Lecteur de flux</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Rafraîchir</translation>
+    </message>
+    <message>
+        <source>Configure</source>
+        <translation>Configurer</translation>
+    </message>
+    <message>
+        <source>This feed reader is not configured.</source>
+        <translation>Ce lecteur de flux n'est pas configuré.</translation>
+    </message>
+    <message>
+        <source>Configure this feed reader</source>
+        <translation>Configurer ce lecteur de flux</translation>
+    </message>
+    <message>
+        <source>Feed reader settings</source>
+        <translation>Configuration du lecteur de flux</translation>
+    </message>
+    <message>
+        <source>Feed URL (RSS or ATOM):</source>
+        <translation>URL du flux (RSS ou ATOM)&#160;:</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Enregistrer</translation>
     </message>
 </context>
 </TS>
