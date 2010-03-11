@@ -2,8 +2,6 @@
  * $Id$
  * $HeadURL$
  *
- * @todo : refactoring
- *
  */
 
 function admin2ppDashboardFeedReader( fullIdentifier, feedURL )
@@ -15,24 +13,7 @@ function admin2ppDashboardFeedReader( fullIdentifier, feedURL )
 admin2ppDashboardFeedReader.SETTINGS_WINDOW_ID = "feed-reader-settings";
 admin2ppDashboardFeedReader.FEED_ID_INPUT_ID   = "fr-feed-id";
 admin2ppDashboardFeedReader.FEED_URL_INPUT_ID  = "fr-feed-url";
-
-admin2ppDashboardFeedReader.showSettings = function( frID, url )
-{
-    jQuery( '#' + admin2ppDashboardFeedReader.FEED_ID_INPUT_ID ).val( frID );
-    jQuery( '#' + admin2ppDashboardFeedReader.FEED_URL_INPUT_ID ).val( url );
-    jQuery( '#' + admin2ppDashboardFeedReader.SETTINGS_WINDOW_ID + ' input[type=submit]' ).removeClass( 'defaultbutton' ); 
-    jQuery( '#' + admin2ppDashboardFeedReader.SETTINGS_WINDOW_ID ).dialog( 'open' );
-};
-
-admin2ppDashboardFeedReader.storeSettings = function( instance )
-{
-    var feedID = jQuery( '#' + admin2ppDashboardFeedReader.FEED_ID_INPUT_ID ).val();
-    var feedURL = jQuery( '#' + admin2ppDashboardFeedReader.FEED_URL_INPUT_ID ).val();
-    var instance = new admin2ppDashboardFeedReader( feedID, feedURL );
-    instance.storeParse();
-    jQuery( '#' + admin2ppDashboardFeedReader.SETTINGS_WINDOW_ID ).dialog( 'close' );
-    return false;
-};
+admin2ppDashboardFeedReader.BLOCK_ID_PREFIX = "admin2pp_db_";
 
 admin2ppDashboardFeedReader.prototype =
 {
@@ -44,7 +25,7 @@ admin2ppDashboardFeedReader.prototype =
              {
                  this.loadResult();
              }
-             jQuery( '#admin2pp_db_' + this.fullIdentifier + ' a.ui-dialog-titlebar-refresh' ).click( function()
+             jQuery( '#' + admin2ppDashboardFeedReader.BLOCK_ID_PREFIX + this.fullIdentifier + ' a.ui-dialog-titlebar-refresh' ).click( function()
                                                                                                       {
                                                                                                           instance.wait();
                                                                                                           instance.loadResult( 1 );
@@ -53,13 +34,13 @@ admin2ppDashboardFeedReader.prototype =
     initSettings:function( initDialog )
                  {
                      var instance = this;
-                     jQuery( '#admin2pp_db_' + this.fullIdentifier + ' a.ui-dialog-titlebar-wrench' ).click( function()
+                     jQuery( '#' + admin2ppDashboardFeedReader.BLOCK_ID_PREFIX + this.fullIdentifier + ' a.ui-dialog-titlebar-wrench' ).click( function()
                                                                                                              {
-                                                                                                                 admin2ppDashboardFeedReader.showSettings( instance.fullIdentifier, instance.feedURL ); 
+                                                                                                                 instance.showSettings(); 
                                                                                                              } );
-                     jQuery( '#admin2pp_db_' + instance.fullIdentifier + ' input.settings' ).click( function()
+                     jQuery( '#' + admin2ppDashboardFeedReader.BLOCK_ID_PREFIX + instance.fullIdentifier + ' input.settings' ).click( function()
                                                                                                               {
-                                                                                                                  admin2ppDashboardFeedReader.showSettings( instance.fullIdentifier, instance.feedURL ); 
+                                                                                                                  instance.showSettings(); 
                                                                                                               } );
 
                      if ( initDialog )
@@ -70,22 +51,91 @@ admin2ppDashboardFeedReader.prototype =
                                                                                                   width:400 } );
                          jQuery( '#' + admin2ppDashboardFeedReader.SETTINGS_WINDOW_ID + ' form' ).submit( function()
                                                                                                           {
-                                                                                                              return admin2ppDashboardFeedReader.storeSettings(); 
+                                                                                                              return instance.storeSettings(); 
                                                                                                           } );
 
                          jQuery( '#' + admin2ppDashboardFeedReader.FEED_URL_INPUT_ID ).blur( function()
                                                                                              {
-                                                                                                 jQuery( '#' + admin2ppDashboardFeedReader.SETTINGS_WINDOW_ID + ' input[type=submit]' ).addClass( 'defaultbutton' ); 
+                                                                                                instance.highlightSettingsButton();
                                                                                              } );
 
                      }
                  },
 
+    highlightSettingsButton:function()
+                            {
+                                jQuery( '#' + admin2ppDashboardFeedReader.SETTINGS_WINDOW_ID + ' input[type=submit]' ).addClass( 'defaultbutton' ); 
+                            },
+
+    removeHighlightSettingsButton:function()
+                            {
+                                jQuery( '#' + admin2ppDashboardFeedReader.SETTINGS_WINDOW_ID + ' input[type=submit]' ).removeClass( 'defaultbutton' ); 
+                            },
+
+    initSettingsForm:function()
+                     {
+                         jQuery( '#' + admin2ppDashboardFeedReader.FEED_ID_INPUT_ID ).val( this.fullIdentifier );
+                         jQuery( '#' + admin2ppDashboardFeedReader.FEED_URL_INPUT_ID ).val( this.feedURL );
+                     },
+
+    openSettings:function()
+                 {
+                     jQuery( '#' + admin2ppDashboardFeedReader.SETTINGS_WINDOW_ID ).dialog( 'open' );
+                 },
+
+    closeSettings:function()
+                  {
+                      jQuery( '#' + admin2ppDashboardFeedReader.SETTINGS_WINDOW_ID ).dialog( 'close' );
+                  },
+
+
+    showSettings:function()
+                 {
+                     this.initSettingsForm();
+                     this.removeHighlightSettingsButton();
+                     this.openSettings();
+                 },
+
+    storeSettings:function()
+                  {
+                      var feedURL = jQuery( '#' + admin2ppDashboardFeedReader.FEED_URL_INPUT_ID ).val();
+                      this.feedURL = feedURL;
+                      this.storeParse();
+                      this.closeSettings();
+                      return false;
+                  },
+    hideNotConfiguredMessage:function()
+                             {
+                                 jQuery( '#' + admin2ppDashboardFeedReader.BLOCK_ID_PREFIX + this.fullIdentifier + ' div.not-configured' ).hide(); 
+                             },
+
+    showNotConfiguredMessage:function()
+                             {
+                                 jQuery( '#' + admin2ppDashboardFeedReader.BLOCK_ID_PREFIX + this.fullIdentifier + ' div.not-configured' ).show(); 
+                             },
+
+    resetContent:function()
+                 {
+                     jQuery( '#content_' + this.fullIdentifier ).html( '' ); 
+                 },
+
+    showLoader:function()
+               {
+                   jQuery( '#' + admin2ppDashboardFeedReader.BLOCK_ID_PREFIX + this.fullIdentifier + ' p.waiting' ).show();
+               },
+
+    hideLoader:function()
+               {
+                   jQuery( '#' + admin2ppDashboardFeedReader.BLOCK_ID_PREFIX + this.fullIdentifier + ' p.waiting' ).hide();
+               },
+
+
+
     wait:function()
          {
-             jQuery( '#admin2pp_db_' + this.fullIdentifier + ' div.not-configured' ).hide(); 
-             jQuery( '#content_' + this.fullIdentifier ).html( '' ); 
-             jQuery( '#admin2pp_db_' + this.fullIdentifier + ' p.waiting' ).show();
+             this.hideNotConfiguredMessage();
+             this.resetContent();
+             this.showLoader();
          },
 
     loadResult:function( force )
@@ -107,7 +157,7 @@ admin2ppDashboardFeedReader.prototype =
     displayResult:function( content )
                   {
                       jQuery( '#content_' + this.fullIdentifier ).html( content ).show();
-                      jQuery( '#admin2pp_db_' + this.fullIdentifier + ' p.waiting' ).hide();
+                      this.hideLoader();
                   },
 
     storeParse:function()
@@ -125,13 +175,13 @@ admin2ppDashboardFeedReader.prototype =
                                } );
                    if ( this.feedURL == '' )
                    {
-                       jQuery( '#admin2pp_db_' + this.fullIdentifier + ' p.waiting' ).hide();
-                       jQuery( '#admin2pp_db_' + this.fullIdentifier + ' a.ui-dialog-titlebar-refresh' ).hide();
-                       jQuery( '#admin2pp_db_' + this.fullIdentifier + ' div.not-configured' ).show(); 
+                       this.hideLoader();
+                       jQuery( '#' + admin2ppDashboardFeedReader.BLOCK_ID_PREFIX + this.fullIdentifier + ' a.ui-dialog-titlebar-refresh' ).hide();
+                       this.showNotConfiguredMessage();
                    }
                    else
                    {
-                       jQuery( '#admin2pp_db_' + this.fullIdentifier + ' a.ui-dialog-titlebar-refresh' ).show();
+                       jQuery( '#' + admin2ppDashboardFeedReader.BLOCK_ID_PREFIX + this.fullIdentifier + ' a.ui-dialog-titlebar-refresh' ).show();
                    }
                }
 }
