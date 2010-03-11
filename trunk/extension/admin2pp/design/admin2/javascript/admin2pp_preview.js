@@ -13,6 +13,7 @@ function admin2ppPreviewDialog( selector )
     this.defaultContent = '';
     this.previewWidth = 0;
     this.previewHeight = 0;
+    this.linkText = '';
 }
 
 admin2ppPreviewDialog.prototype =
@@ -70,7 +71,7 @@ admin2ppPreviewDialog.prototype =
                                               instance.openDialogAt( linkNode, 'right_of', [5, -8] );
                                               window.ezpopmenu_hideAll();
                                               return false;
-                                          });
+                                          }).html( instance.linkText );
 
              jQuery( '#child-menu-view' ).click(function( evt )
                                           {
@@ -80,7 +81,7 @@ admin2ppPreviewDialog.prototype =
                                               instance.openDialogAt( menuNode, 'left_of', [6, -20] );
                                               window.ezpopmenu_hideAll();
                                               return false;
-                                          });
+                                          }).html( instance.linkText );
 
          },
 

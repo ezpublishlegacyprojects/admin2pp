@@ -32,6 +32,10 @@
         <source>Loading...</source>
         <translation>Chargement...</translation>
     </message>
+    <message>
+        <source>Preview</source>
+        <translation>Prévisualisation</translation>
+    </message>
 </context>
 <context>
     <name>admin2pp/dashboard</name>

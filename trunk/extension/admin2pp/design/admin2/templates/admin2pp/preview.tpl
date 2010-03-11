@@ -13,6 +13,7 @@ jQuery(document).ready(function()
     var previewDialog = new admin2ppPreviewDialog( '#preview-dialog' );
     previewDialog.previewWidth = {cond( $width|ne(''), $width, ezini( 'PreviewSettings', 'PreviewWidth', 'admin2pp.ini',, true() ) )};
     previewDialog.previewHeight = {cond( $height|ne(''), $height, ezini( 'PreviewSettings', 'PreviewHeight', 'admin2pp.ini',, true() ) )};
+    previewDialog.linkText = "{'Preview'|i18n( 'admin2pp/preview' )|wash( javascript )}";
     previewDialog.init();
 {rdelim});
 {undef $width $height}
