@@ -155,3 +155,9 @@ display:block;
 margin:10px auto;
 }
 
+/* right menu AJAX loading */
+#rightmenu.loading
+{
+background:url(../images/admin2pp-loader-right-menu.gif) no-repeat center 4em;
+height:120px;
+}

@@ -8,6 +8,37 @@
 class admin2ppAjaxFunctions extends ezjscServerFunctions
 {
 
+    public static function rightmenu( $args )
+    {
+        $http = eZHTTPTool::instance();
+        $key = 'admin_right_menu_show';
+        $value = '1';
+        if ( eZOperationHandler::operationIsAvailable( 'user_preferences' ) )
+        {
+            $operationResult = eZOperationHandler::execute( 'user',
+                                                            'preferences', array( 'key'    => $key,
+                                                                                  'value'  => $value ) );
+        }
+        else
+        {
+            eZPreferences::setValue( $key, $value );
+        }
+        $uiContext = 'navigation';
+        $Result = array( 'content_info' => array() );
+        if ( $http->hasPostVariable( 'UIContext' ) )
+        {
+            $uiContext = $http->postVariable( 'UIContext' );
+        }
+        if ( $http->hasPostVariable( 'ContentInfo' ) )
+        {
+            $Result['content_info'] = $http->postVariable( 'ContentInfo' );
+        }
+        $tpl = eZTemplate::factory();
+        $tpl->setVariable( 'current_user', eZUser::currentUser() );
+        $tpl->setVariable( 'ui_context', $uiContext );
+        $tpl->setVariable( 'module_result', $Result );
+        return $tpl->fetch( 'design:admin2ppajax/rightmenu.tpl' );
+    }
 
     public static function preview( $args )
     {

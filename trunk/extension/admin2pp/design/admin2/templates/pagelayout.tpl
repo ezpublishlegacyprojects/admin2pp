@@ -84,10 +84,12 @@
 	    {tool_bar name='admin_developer' view='full'}
 	</div>
     <!-- script type="text/javascript" src={"javascript/rightmenu_widthcontrol.js"|ezdesign} charset="utf-8"></script -->
-    <script type="text/javascript">
-        rightMenuWidthControl();
-    </script>
 {/if}
+    <script type="text/javascript">
+        var contentInfo = {json_encode( $module_result.content_info )};
+        var uiContext = "{$ui_context}";
+        rightMenuWidthControl( contentInfo, uiContext );
+    </script>
 </div>
 
 
