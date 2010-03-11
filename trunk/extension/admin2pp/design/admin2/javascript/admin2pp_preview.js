@@ -63,6 +63,7 @@ admin2ppPreviewDialog.prototype =
                                                                         admin2ppAjaxSavePreference( 'admin2pp_preview_height', height );
                                                                     }
                                                       });
+             // TODO refactoring needed
              jQuery( '#menu-view' ).click(function( evt )
                                           {
                                               var p = jQuery( instance.dialogSelector ), previewLink = jQuery( evt.target )
@@ -82,6 +83,14 @@ admin2ppPreviewDialog.prototype =
                                               window.ezpopmenu_hideAll();
                                               return false;
                                           }).html( instance.linkText );
+             jQuery( '#bookmark-view' ).click(function( evt )
+                                              {
+                                                  var p = jQuery( instance.dialogSelector ), previewLink = jQuery( evt.target )
+                                                  instance.currentNodeID = previewLink.attr( 'href' ).split("/").pop();
+                                                  instance.openDialogAt( jQuery( '#bookmarks' ), 'left_of', [-instance.previewWidth, 0] );
+                                                  window.ezpopmenu_hideAll();
+                                                  return false;
+                                              }).html( instance.linkText );
 
          },
 
