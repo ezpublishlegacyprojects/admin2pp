@@ -21,6 +21,20 @@ Images[]=admin2pp-loader-small.gif
 
 # images to preload that are not in images folder
 NonStandardImages[]
+NonStandardImages[]=stylesheets/ez43/images/ui-icons_2e83ff_256x240.png
+NonStandardImages[]=stylesheets/ez43/images/ui-icons_ffffff_256x240.png
+NonStandardImages[]=stylesheets/ez43/images/ui-icons_cd0a0a_256x240.png
+NonStandardImages[]=stylesheets/ez43/images/ui-icons_454545_256x240.png
+NonStandardImages[]=stylesheets/ez43/images/ui-icons_222222_256x240.png
+NonStandardImages[]=stylesheets/ez43/images/ui-icons_000000_256x240.png
+NonStandardImages[]=stylesheets/ez43/images/ui-bg_inset-hard_20_006b9c_1x100.png
+NonStandardImages[]=stylesheets/ez43/images/ui-bg_glass_55_fdfaa1_1x400.png
+NonStandardImages[]=stylesheets/ez43/images/ui-bg_inset-soft_95_fddbd8_1x100.png
+NonStandardImages[]=stylesheets/ez43/images/ui-bg_glass_75_e6e6e6_1x400.png
+NonStandardImages[]=stylesheets/ez43/images/ui-bg_glass_75_ffffff_1x400.png
+NonStandardImages[]=stylesheets/ez43/images/ui-bg_flat_75_ffffff_40x100.png
+NonStandardImages[]=stylesheets/ez43/images/ui-bg_flat_0_ffffff_40x100.png
+NonStandardImages[]=stylesheets/ez43/images/ui-bg_flat_0_aaaaaa_40x100.png
 NonStandardImages[]=javascript/themes/ez/img/icons.png
 NonStandardImages[]=stylesheets/skins/o2k7/img/button_bg_silver.png
 NonStandardImages[]=stylesheets/skins/o2k7/img/button_bg.png
