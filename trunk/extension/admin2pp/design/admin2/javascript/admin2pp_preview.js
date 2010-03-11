@@ -91,6 +91,10 @@ admin2ppPreviewDialog.prototype =
                           var p = jQuery( instance.dialogSelector );
                           var offset = positionElt.offset();
                           var topPos = offset.top + manualOffset[1] - jQuery(document).scrollTop();
+                          if ( (topPos + instance.previewHeight) > jQuery(window).height() )
+                          {
+                              topPos = topPos - ( (topPos + instance.previewHeight) - jQuery(window).height() ) - 10;
+                          }
                           var leftPos = 0;
                           if ( type == 'right_of' )
                           {
