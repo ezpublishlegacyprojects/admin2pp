@@ -22,6 +22,7 @@ var rightMenuWidthControl = function( contentInfo, uiContext )
 
             if ( jQuery( '#rightmenu-design' ).html() == '' )
             {
+                rightmenu.addClass( 'loading' );
                 rightmenu.animate({
                     width: '181px'
                 }, 300, 'swing', function(){
@@ -63,7 +64,6 @@ var rightMenuWidthControl = function( contentInfo, uiContext )
     function loadRightMenu( contentInfo, uiContext )
     {
         var rightmenuDesign = jQuery( '#rightmenu-design' ), rightmenu = jQuery( '#rightmenu' );
-        rightmenu.addClass( 'loading' );
         jQuery.ez( 'admin2ppajax::rightmenu',
                    { UIContext:uiContext, ContentInfo:contentInfo },
                    function( data )
