@@ -79,6 +79,7 @@ jQuery( '#ezcontent_advancesearch_class_id' ).change(function()
     if ( classSelect.val() != "-1" )
     {
         jQuery( '#admin2pp-attribute-loader' ).toggle();
+        attrSelect.find( 'option[value!="-1"]' ).remove();
         jQuery.ez( 'admin2ppajax::attributes::' + classSelect.val(),
                    false,
                    function( data )
