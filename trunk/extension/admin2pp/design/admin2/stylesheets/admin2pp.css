@@ -161,3 +161,10 @@ margin:10px auto;
 background:url(../images/admin2pp-loader-right-menu.gif) no-repeat center 4em;
 height:120px;
 }
+
+/* drag n drop */
+tr.ui-state-highlight td
+{
+border-top:1px solid #e9c22b;
+border-bottom:1px solid #e9c22b;
+}
