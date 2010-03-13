@@ -54,3 +54,13 @@ font-weight: bold;
 -webkit-border-radius: 3px;
 border-radius: 3px;
 }
+/* bookmarks in right menu */
+#bookmarks ul
+{
+list-style-type:none;
+margin-left:0.2em;
+}
+#bookmarks ul img
+{
+vertical-align:middle;
+}
