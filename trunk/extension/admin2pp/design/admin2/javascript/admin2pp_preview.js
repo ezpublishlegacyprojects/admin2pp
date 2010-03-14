@@ -14,7 +14,21 @@ function admin2ppPreviewDialog( selector )
     this.previewWidth = 0;
     this.previewHeight = 0;
     this.linkText = '';
+    this.editText = '';
+    this.removeText = '';
+    this.moveText = '';
+    this.copyText = '';
 }
+
+admin2ppPreviewDialog.removeNode = function( nodeID )
+                                   {
+
+                                   };
+
+admin2ppPreviewDialog.moveNode = function( nodeID )
+                                 {
+
+                                 };
 
 admin2ppPreviewDialog.prototype =
 {
@@ -24,6 +38,71 @@ admin2ppPreviewDialog.prototype =
                           return result;
                      },
 
+    storeDefault:function()
+                 {
+                     var d = jQuery( this.dialogSelector );
+                     var t = jQuery( this.getTitleSelector() );
+                     this.defaultTitle   = t.html();
+                     this.defaultContent = d.html();
+                 },
+
+    restoreDefault:function()
+                   {
+                       var d = jQuery( this.dialogSelector );
+                       var t = jQuery( this.getTitleSelector() );
+                       t.html( this.defaultTitle );
+                       d.html( this.defaultContent );
+                       jQuery( this.getTitleSelector() ).parent().find( 'a.admin2pp-action' ).remove();
+                   },
+
+    addSimpleLink:function( url, text, type, callback )
+                  {
+                      var nodeID = this.currentNodeID;
+                      var link = '<a class="ui-dialog-titlebar-' + type + ' ui-corner-all admin2pp-action" title="' + text + '" href="' + url + '"><span class="ui-icon ui-icon-' + type + '">' + text + '</span></a>';
+                      jQuery( this.getTitleSelector() ).before( link );
+                      if ( callback )
+                      {
+                          jQuery( this.getTitleSelector() ).parent().find( 'a.admin2pp-action' ).click(function()
+                                                                                                       {
+                                                                                                           callback( nodeID ); 
+                                                                                                       });
+                      }
+                  },
+
+    buildPreview:function( content )
+                 {
+                     var d = jQuery( this.dialogSelector );
+                     var t = jQuery( this.getTitleSelector() );
+                     t.html( content.title );
+                     if ( content.edit )
+                     {
+                         this.addSimpleLink( content.edit, this.editText, 'pencil' );
+                     }
+                     if ( content.remove )
+                     {
+                         this.addSimpleLink( '#', this.removeText, 'trash' );
+                     }
+                     if ( content.copy )
+                     {
+                         this.addSimpleLink( content.copy, this.copyText, 'copy' );
+                     }
+                     if ( content.move )
+                     {
+                         this.addSimpleLink( '#', this.moveText, 'transferthick-e-w' );
+                     }
+
+                     var actionButtons = jQuery( this.getTitleSelector() ).parent().find( 'a.admin2pp-action' );
+                     actionButtons.mouseover(function( evt )
+                                             {
+                                                 jQuery( this ).addClass( 'ui-state-hover' );
+                                             });
+
+                     actionButtons.mouseout(function( evt )
+                                            {
+                                                jQuery( this ).removeClass( 'ui-state-hover' );
+                                            });
+                     d.html( content.preview );
+                 },
 
     init:function()
          {
@@ -35,24 +114,17 @@ admin2ppPreviewDialog.prototype =
                                                                              false,
                                                                              function( data )
                                                                              {
-                                                                                 var d = jQuery( instance.dialogSelector );
-                                                                                 var t = jQuery( instance.getTitleSelector() );
                                                                                  if ( data.content )
                                                                                  {
                                                                                      var content = jQuery.parseJSON( data.content );
-                                                                                     instance.defaultTitle   = t.html();
-                                                                                     instance.defaultContent = d.html();
-                                                                                     t.html( content.title );
-                                                                                     d.html( content.preview );
+                                                                                     instance.storeDefault();
+                                                                                     instance.buildPreview( content );
                                                                                  }
                                                                              });
                                                               },
                                                         close: function( evt, ui )
                                                                {
-                                                                   var d = jQuery( instance.dialogSelector );
-                                                                   var t = jQuery( instance.getTitleSelector() );
-                                                                   d.html( instance.defaultContent );
-                                                                   t.html( instance.defaultTitle );
+                                                                   instance.restoreDefault(); 
                                                                },
                                                         resizeStop: function( evt, ui )
                                                                     {

@@ -14,6 +14,10 @@ jQuery(document).ready(function()
     previewDialog.previewWidth = {cond( $width|ne(''), $width, ezini( 'PreviewSettings', 'PreviewWidth', 'admin2pp.ini',, true() ) )};
     previewDialog.previewHeight = {cond( $height|ne(''), $height, ezini( 'PreviewSettings', 'PreviewHeight', 'admin2pp.ini',, true() ) )};
     previewDialog.linkText = "{'Preview'|i18n( 'admin2pp/preview' )|wash( javascript )}";
+    previewDialog.editText = "{'Edit'|i18n( 'admin2pp/preview' )|wash( javascript )}";
+    previewDialog.removeText = "{'Remove'|i18n( 'admin2pp/preview' )|wash( javascript )}";
+    previewDialog.moveText = "{'Move'|i18n( 'admin2pp/preview' )|wash( javascript )}";
+    previewDialog.copyText = "{'Copy'|i18n( 'admin2pp/preview' )|wash( javascript )}";
     previewDialog.init();
 {rdelim});
 {undef $width $height}

@@ -36,7 +36,14 @@ color:#222;
 padding:3px 0;
 margin-bottom:4px;
 }
-
+a.admin2pp-action
+{
+float:left;
+}
+#ui-dialog-title-preview-dialog
+{
+padding-left:1em;
+}
 /* dashboard blocks */
 .ui-sortable-placeholder
 {
