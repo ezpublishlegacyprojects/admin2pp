@@ -17,7 +17,7 @@ admin2ppDragNDropChildren.prototype =
     init:function()
          {
              var instance = this;
-             this.sortOrder = jQuery( '#ezasi-sort-order' ).val() === '0' ? 0 : -1;
+             this.sortOrder = jQuery( '#ezasi-sort-order' ).val() === '0' ? -1 : 0;
              jQuery('#' + admin2ppDragNDropChildren.TABLE_ID + ' tbody').sortable( { placeholder: 'ui-state-highlight',
                                                                                      axis:'y',
                                                                                      opacity:0.8,
@@ -52,11 +52,11 @@ admin2ppDragNDropChildren.prototype =
     setPriorities:function()
                   {
                       var inputs = jQuery( '#' + admin2ppDragNDropChildren.TABLE_ID + ' input.ezasi-priority-input' );
-                      var starts = inputs.size() * this.sortOrder * admin2ppDragNDropChildren.PRIORITY_OFFSET;
+                      var start = inputs.size() * this.sortOrder * admin2ppDragNDropChildren.PRIORITY_OFFSET;
                       inputs.each(function()
                                   {
-                                      jQuery( this ).val( starts ); 
-                                      starts = starts + admin2ppDragNDropChildren.PRIORITY_OFFSET;
+                                      jQuery( this ).val( start ); 
+                                      start = start + admin2ppDragNDropChildren.PRIORITY_OFFSET;
                                   });
                   },
 
