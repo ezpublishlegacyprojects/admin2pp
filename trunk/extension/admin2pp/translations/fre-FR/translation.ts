@@ -36,6 +36,22 @@
         <source>Preview</source>
         <translation>Prévisualisation</translation>
     </message>
+    <message>
+        <source>Edit</source>
+        <translation>Modifier</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Supprimer</translation>
+    </message>
+    <message>
+        <source>Move</source>
+        <translation>Déplacer</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Copier</translation>
+    </message>
 </context>
 <context>
     <name>admin2pp/dashboard</name>
