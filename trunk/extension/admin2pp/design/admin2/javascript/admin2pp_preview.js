@@ -22,12 +22,17 @@ function admin2ppPreviewDialog( selector )
 
 admin2ppPreviewDialog.removeNode = function( nodeID )
                                    {
-
+                                       jQuery( '#menu-form-remove input[name="ContentObjectID"]' ).val( 1 );
+                                       jQuery( '#menu-form-remove input[name="ContentNodeID"]' ).val( nodeID );
+                                       jQuery( '#menu-form-remove' ).submit();
+                                       return false;
                                    };
 
 admin2ppPreviewDialog.moveNode = function( nodeID )
                                  {
-
+                                     jQuery( '#menu-form-move input[name="ContentNodeID"]' ).val( nodeID );
+                                     jQuery( '#menu-form-move' ).submit();
+                                     return false;
                                  };
 
 admin2ppPreviewDialog.prototype =
@@ -62,10 +67,10 @@ admin2ppPreviewDialog.prototype =
                       jQuery( this.getTitleSelector() ).before( link );
                       if ( callback )
                       {
-                          jQuery( this.getTitleSelector() ).parent().find( 'a.admin2pp-action' ).click(function()
-                                                                                                       {
-                                                                                                           callback( nodeID ); 
-                                                                                                       });
+                          jQuery( this.getTitleSelector() ).parent().find( 'a.ui-dialog-titlebar-' + type ).click(function()
+                                                                                                                  {
+                                                                                                                      return callback( nodeID ); 
+                                                                                                                  });
                       }
                   },
 
@@ -80,7 +85,7 @@ admin2ppPreviewDialog.prototype =
                      }
                      if ( content.remove )
                      {
-                         this.addSimpleLink( '#', this.removeText, 'trash' );
+                         this.addSimpleLink( '#', this.removeText, 'trash', admin2ppPreviewDialog.removeNode );
                      }
                      if ( content.copy )
                      {
@@ -88,7 +93,7 @@ admin2ppPreviewDialog.prototype =
                      }
                      if ( content.move )
                      {
-                         this.addSimpleLink( '#', this.moveText, 'transferthick-e-w' );
+                         this.addSimpleLink( '#', this.moveText, 'transferthick-e-w', admin2ppPreviewDialog.moveNode );
                      }
 
                      var actionButtons = jQuery( this.getTitleSelector() ).parent().find( 'a.admin2pp-action' );
