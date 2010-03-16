@@ -8,6 +8,12 @@
 class admin2ppAjaxFunctions extends ezjscServerFunctions
 {
 
+    public static function sysinfo( $args )
+    {
+        $tpl = eZTemplate::factory();
+        return $tpl->fetch( 'design:admin2ppajax/sysinfo.tpl' );
+    }
+
     public static function rightmenu( $args )
     {
         $http = eZHTTPTool::instance();

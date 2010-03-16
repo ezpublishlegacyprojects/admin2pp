@@ -185,6 +185,26 @@ class admin2ppFunctionCollection
     }
 
 
+    public function fetchSystemInfos()
+    {
+        $result = '';
+        $info = ezcSystemInfo::getInstance();
+        $osType = $info->osName;
+        $ini = eZINI::instance( 'dashboard.ini' );
+        if ( $ini->hasVariable( 'DashboardBlock_sysinfo', 'Commands_' . $osType ) )
+        {
+            $commands = $ini->variable( 'DashboardBlock_sysinfo', 'Commands_' . $osType );
+            foreach( $commands as $c )
+            {
+                $result .= shell_exec( $c );
+            }
+        }
+        else
+        {
+            $result = ezpI18n::tr( 'admin2pp/dashboard/sysinfo', 'Unable to find commands to execute on your hosting environment %1', null, array( $osType ) );
+        }
+        return array( 'result' => $result );
+    }
 
 }
 

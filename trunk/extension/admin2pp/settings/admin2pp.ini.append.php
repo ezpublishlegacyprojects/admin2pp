@@ -56,5 +56,6 @@ BlockNames[maintenance]=Software update and Maintenance
 # name of additional blocks
 BlockNames[advanced_search]=Advanced search form
 BlockNames[feed_reader]=Feed reader
+BlockNames[sysinfo]=System infos
 
 */ ?>

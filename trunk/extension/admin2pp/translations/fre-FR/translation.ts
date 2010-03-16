@@ -111,6 +111,10 @@
         <source>Feed reader</source>
         <translation>Lecteur de flux</translation>
     </message>
+    <message>
+        <source>System infos</source>
+        <translation>Informations système</translation>
+    </message>
 </context>
 <context>
     <name>admin2pp/dashboard/advancedsearch</name>
@@ -160,6 +164,25 @@
     <message>
         <source>Save</source>
         <translation>Enregistrer</translation>
+    </message>
+</context>
+<context>
+    <name>admin2pp/dashboard/sysinfo</name>
+    <message>
+        <source>System infos</source>
+        <translation>Informations système</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Rafraîchir</translation>
+    </message>
+    <message>
+        <source>Unable to find commands to execute on your hosting environment %1</source>
+        <translation>Impossible de trouver des commandes à exécuter sur votre environnement d'hébergement %1</translation>
+    </message>
+    <message>
+        <source>Loading...</source>
+        <translation>Chargement...</translation>
     </message>
 </context>
 </TS>

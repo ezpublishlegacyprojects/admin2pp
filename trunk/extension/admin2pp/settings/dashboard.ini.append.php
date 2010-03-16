@@ -11,6 +11,7 @@
 AdditionnalDashboardBlocks[]
 AdditionnalDashboardBlocks[]=advanced_search
 AdditionnalDashboardBlocks[]=feed_reader
+AdditionnalDashboardBlocks[]=sysinfo
 
 
 [DashboardBlock_advanced_search]
@@ -22,5 +23,12 @@ Priority=60
 MultipleInstance=true
 NumberOfItems=5
 CacheTTL=1800
+
+[DashboardBlock_sysinfo]
+Priority=60
+Commands_Linux[]
+Commands_Linux[]=uptime
+Commands_Linux[]=echo ""
+Commands_Linux[]=free -m
 
 */ ?>
