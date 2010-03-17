@@ -29,6 +29,5 @@ Priority=60
 Commands[]
 Commands[Uptime/Load]=uptime | sed 's/^ *//g'
 Commands[Memory usage]=free -m
-Commands[adza]=dazad
 
 */ ?>
