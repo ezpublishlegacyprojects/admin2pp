@@ -188,20 +188,22 @@ class admin2ppFunctionCollection
     public function fetchSystemInfos()
     {
         $result = array();
-        $info = ezcSystemInfo::getInstance();
-        $osType = $info->osName;
         $ini = eZINI::instance( 'dashboard.ini' );
-        if ( $ini->hasVariable( 'DashboardBlock_sysinfo', 'Commands_' . $osType ) )
+        $commands = $ini->variable( 'DashboardBlock_sysinfo', 'Commands' );
+        foreach( $commands as $name => $c )
         {
-            $commands = $ini->variable( 'DashboardBlock_sysinfo', 'Commands_' . $osType );
-            foreach( $commands as $name => $c )
+            $commandResult = array();
+            $return = 0;
+            exec( $c, $commandResult, $return );
+            if ( $return === 0 )
             {
-                $result[$name] = shell_exec( $c );
+                $result[$name] = $commandResult;
             }
-        }
-        else
-        {
-            $result = ezpI18n::tr( 'admin2pp/dashboard/sysinfo', 'Unable to find commands to execute on your hosting environment %1', null, array( $osType ) );
+            else
+            {
+                $result[$name] = ezpI18n::tr( 'admin2pp/dashboard/sysinfo', 'Unable to execute "%1"', null, array( $c ) );
+            }
+
         }
         return array( 'result' => $result );
     }

@@ -177,8 +177,8 @@
         <translation>Rafraîchir</translation>
     </message>
     <message>
-        <source>Unable to find commands to execute on your hosting environment %1</source>
-        <translation>Impossible de trouver des commandes à exécuter sur votre environnement d'hébergement %1</translation>
+        <source>Unable to execute "%1"</source>
+        <translation>Impossible d'éxécuter "%1"</translation>
     </message>
     <message>
         <source>Loading...</source>
