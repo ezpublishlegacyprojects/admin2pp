@@ -178,9 +178,12 @@ border-bottom:1px solid #e9c22b;
 /* system infos dashboard block */
 #admin2pp-sysinfo pre
 {
-margin:5px;
 padding:4px;
 overflow:auto;
+}
+#admin2pp-sysinfo dd
+{
+margin:0 0.5em 0.5em 0.5em;
 }
 #admin2pp_db_sysinfo p.waiting
 {

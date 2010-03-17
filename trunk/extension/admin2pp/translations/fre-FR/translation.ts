@@ -184,5 +184,13 @@
         <source>Loading...</source>
         <translation>Chargement...</translation>
     </message>
+    <message>
+        <source>Memory usage</source>
+        <translation>Utilisation mémoire</translation>
+    </message>
+    <message>
+        <source>Uptime/Load</source>
+        <translation>Temps depuis le dernier redémarrage/Charge</translation>
+    </message>
 </context>
 </TS>

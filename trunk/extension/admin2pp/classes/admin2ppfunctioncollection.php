@@ -187,16 +187,16 @@ class admin2ppFunctionCollection
 
     public function fetchSystemInfos()
     {
-        $result = '';
+        $result = array();
         $info = ezcSystemInfo::getInstance();
         $osType = $info->osName;
         $ini = eZINI::instance( 'dashboard.ini' );
         if ( $ini->hasVariable( 'DashboardBlock_sysinfo', 'Commands_' . $osType ) )
         {
             $commands = $ini->variable( 'DashboardBlock_sysinfo', 'Commands_' . $osType );
-            foreach( $commands as $c )
+            foreach( $commands as $name => $c )
             {
-                $result .= shell_exec( $c );
+                $result[$name] = shell_exec( $c );
             }
         }
         else

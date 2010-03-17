@@ -27,8 +27,7 @@ CacheTTL=1800
 [DashboardBlock_sysinfo]
 Priority=60
 Commands_Linux[]
-Commands_Linux[]=uptime
-Commands_Linux[]=echo ""
-Commands_Linux[]=free -m
+Commands_Linux[Uptime/Load]=uptime | sed 's/^ *//g'
+Commands_Linux[Memory usage]=free -m
 
 */ ?>
