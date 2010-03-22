@@ -34,7 +34,7 @@ admin2ppObjectInfoResizable.prototype =
                               minHeight: 30,
                               stop: function( evt, ui )
                                     {
-                                        instance.heightBox = ui.size.height;
+                                        instance.heightBox = jQuery( instance.globalSelector ). height();
                                         instance.heightTab = jQuery( instance.tabSelector ).height();
                                         admin2ppAjaxSavePreference( instance.prefName, instance.heightBox + ',' + instance.heightTab );
                                         jQuery( instance.globalSelector ).css( 'width', 'auto' );
