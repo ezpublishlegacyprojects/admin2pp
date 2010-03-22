@@ -314,12 +314,12 @@ ul.leftmenu-items li.current a
     width: 7px;
     cursor: e-resize;
     overflow: hidden;
-    background: #f8f8f8 url(../images/v-sprite-43.png) no-repeat -70px 30%;/*url('../images/2/vertical-grippie.png') no-repeat right 30% scroll;*/
+    background: #f8f8f8 url(../images/v-sprite-43.png) no-repeat -123px 30%;/*url('../images/2/vertical-grippie.png') no-repeat right 30% scroll;*/
 }
 
 #widthcontrol-handler:hover
 {
-    background-position:-63px 30%;/* left 30%;*/
+    background-position:-116px 30%;/* left 30%;*/
     background-color: #eaeaea;
 }
 
