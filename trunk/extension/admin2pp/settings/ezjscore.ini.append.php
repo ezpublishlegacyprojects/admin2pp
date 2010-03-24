@@ -7,7 +7,7 @@
 [eZJSCore]
 ExternalScripts[jqueryui]=http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js
 LocalScripts[jqueryui]=jquery-ui-1.7.2.min.js
-
+Packer=3
 
 [Packer]
 AppendLastModifiedTime=enabled
