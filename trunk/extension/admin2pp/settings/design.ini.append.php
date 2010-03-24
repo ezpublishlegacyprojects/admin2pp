@@ -9,7 +9,7 @@ DesignExtensions[]=admin2pp
 
 
 [StylesheetSettings]
-BackendCSSFileList[]=ez43/jquery-ui-1.7.2.custom.css
+BackendCSSFileList[]=ez43/jquery-ui-1.8.custom.css
 BackendCSSFileList[]=admin2pp.css
 
 # stylesheet to improve some default styles like
