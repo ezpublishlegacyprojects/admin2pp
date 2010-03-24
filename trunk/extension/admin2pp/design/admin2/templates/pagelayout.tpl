@@ -184,7 +184,7 @@ document.getElementById('header-usermenu-logout').innerHTML += '<span class="hea
 </script>
 {include uri="design:admin2pp/preview.tpl"}
 {include uri="design:admin2pp/dashboard_preferences_window.tpl"}
-{if is_set( $module_result.node_id )}
+{if and( $ui_context|ne( 'browse' ), is_set( $module_result.node_id ) )}
     {include uri="design:admin2pp/resizable_object_info.tpl"}
 {/if}
 
