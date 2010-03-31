@@ -32,6 +32,11 @@ class admin2ppInfo
                       'Version'   => '0.1alpha1',
                       'Copyright' => 'Copyright (C) 2010 Damien Pobel',
                       'License'   => 'GNU General Public License v2.0',
+                      'Includes the following library' => array( 'Name'      => 'jQueryUI',
+                                                                 'Version'   => '1.8.0',
+                                                                 'Copyright' => '<a href="http://jqueryui.com/about">jQuery UI Team</a>',
+                                                                 'License'   => 'GNU General Public License v2.0',
+                                                               ),
                     );
     }
 }
