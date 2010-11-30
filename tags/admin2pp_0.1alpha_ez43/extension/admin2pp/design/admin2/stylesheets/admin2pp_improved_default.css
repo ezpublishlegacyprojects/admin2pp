@@ -1,0 +1,68 @@
+/**
+ * $Id$
+ * $HeadURL$
+ *
+ * Stylesheet improving default ezadmin2 style (not related to JS widget)
+ */
+
+/* improved textarea, input and fielset */
+#searchtext:focus, .dashboard-item .semi input:focus,
+input.halfbox:focus, textarea.halfbox:focus,
+input.box:focus, textarea.box:focus,
+div.date input:focus, div.time input:focus,
+input.priority:focus, .ezcca-edit-user_account input:focus,
+input.ezcc-product:focus
+{
+background-color:#fffec5;
+border: 1px solid #666;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+input.halfbox, textarea.halfbox,
+input.box, textarea.halfbox,
+div.date input, div.time input,
+input.priority, .ezcca-edit-user_account input,
+input.ezcc-product
+{
+border: 1px solid #666;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+line-height: 18px !important;
+}
+fieldset
+{
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
+/* style on context menus */
+div.popupmenu
+{
+padding:2px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+background:#fcfcfc;
+}
+div.popupmenuheader
+{
+border: 1px solid #ccc;
+background: #006b9c url(ez43/images/ui-bg_inset-hard_20_006b9c_1x100.png) 50% 50% repeat-x; color: #ffffff;
+font-weight: bold;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+/* bookmarks in right menu */
+#bookmarks ul
+{
+list-style-type:none;
+margin-left:0.2em;
+}
+#bookmarks ul img
+{
+vertical-align:middle;
+}
