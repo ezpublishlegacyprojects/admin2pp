@@ -23,7 +23,6 @@ BackendCSSFileList[]=admin2pp_improved_default.css
 [JavaScriptSettings]
 BackendJavaScriptList[]=node_tabs.js
 BackendJavaScriptList[]=ezajaxrelations_jquery.js
-BackendJavaScriptList[]=admin2pp_dragndrop_children.js
 BackendJavaScriptList[]=admin2pp_utils.js
 BackendJavaScriptList[]=admin2pp_preview.js
 BackendJavaScriptList[]=admin2pp_dashboard.js
