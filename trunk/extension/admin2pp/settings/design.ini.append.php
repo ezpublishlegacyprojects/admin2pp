@@ -27,6 +27,5 @@ BackendJavaScriptList[]=admin2pp_utils.js
 BackendJavaScriptList[]=admin2pp_preview.js
 BackendJavaScriptList[]=admin2pp_dashboard.js
 BackendJavaScriptList[]=admin2pp_dashboard_feed_reader.js
-BackendJavaScriptList[]=admin2pp_resize_object_info.js
 
 */ ?>
