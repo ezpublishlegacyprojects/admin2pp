@@ -5,6 +5,7 @@
 {* Do some uncacheable left + right menu stuff before cache-block's *}
 {def $ui_context_edit      = eq( $ui_context, 'edit' )
      $content_edit         = and( $ui_context_edit, eq( $ui_component, 'content' ) )
+     $hide_left_menu       = first_set( $module_result.content_info.persistent_variable.left_menu, $content_edit|not )|not
      $hide_right_menu      = first_set( $module_result.content_info.persistent_variable.extra_menu, $ui_context_edit|not )|not
      $collapse_right_menu  = ezpreference( 'admin_right_menu_show' )|not
      $admin_left_size      = ezpreference( 'admin_left_menu_size' )
@@ -38,8 +39,9 @@
 </style>
 {/if}
 
-{* Pr uri header cache *}
-{cache-block keys=array( $module_result.uri, $user_hash, $admin_theme ) ignore_content_expiry}
+{* Pr uri header cache
+ Need navigation part for cases like content/browse where node id is taken from caller params *}
+{cache-block keys=array( $module_result.uri, $user_hash, $admin_theme, $access_type, first_set( $module_result.navigation_part, $navigation_part.identifier ) ) ignore_content_expiry}
 
 {include uri='design:page_head.tpl'}
 
@@ -47,7 +49,7 @@
 {include uri='design:page_head_script.tpl'}
 
 {* Pr tab header cache *}
-{cache-block keys=array( $navigation_part.identifier, $module_result.navigation_part, $ui_context, $ui_component, $user_hash ) ignore_content_expiry}
+{cache-block keys=array( $ui_context, $ui_component, $user_hash, $access_type, first_set( $module_result.navigation_part, $navigation_part.identifier ) ) ignore_content_expiry}
 
 </head>
 <body>
@@ -96,7 +98,7 @@
 <div id="maincolumn">
 
 {* Pr uri Path/Left menu cache (dosn't use ignore_content_expiry because of content structure menu  ) *}
-{cache-block keys=array( $module_result.uri, $user_hash, $left_size_hash )}
+{cache-block keys=array( $module_result.uri, $user_hash, $left_size_hash, $access_type, first_set( $module_result.navigation_part, $navigation_part.identifier ) )}
 
 <div id="path">
 <div id="path-design">
@@ -107,7 +109,7 @@
 <hr class="hide" />
 
 {* LEFT MENU / CONTENT STRUCTURE MENU *}
-{if $content_edit}
+{if $hide_left_menu}
 {else}
     {include uri='design:page_leftmenu.tpl'}
 {/if}
@@ -115,7 +117,7 @@
 {/cache-block}{* /Pr uri cache *}
 
 {* Main area START *}
-{if $content_edit}
+{if $hide_left_menu}
     {include uri='design:page_mainarea.tpl'}
 {else}
     <div id="maincontent">
@@ -137,7 +139,7 @@
 <hr class="hide" />
 
 
-{cache-block ignore_content_expiry}
+{cache-block keys=array( $access_type ) ignore_content_expiry}
 <div id="footer" class="float-break">
 <div id="footer-design">
     {include uri='design:page_copyright.tpl'}
@@ -160,23 +162,22 @@ document.getElementById('header-usermenu-logout').innerHTML += '<span class="hea
 (function( $ )
 {
     var searchtext = document.getElementById('searchtext');
-    if ( searchtext && !searchtext.disabled )
-    {
-    	jQuery( searchtext ).val( searchtext.title
-    	).addClass('passive'
-    	).focus(function(){
-        	if ( this.value === this.title )
-        	{
-        	    jQuery( this ).removeClass('passive').val('');
-        	}
-        }).blur(function(){
-            if ( this.value === '' )
-            {
-                jQuery( this ).addClass('passive').val( this.title );
-            }
-        });
-    	
-    }
+    if ( !searchtext || searchtext.disabled )
+        return;
+
+    jQuery( searchtext ).val( searchtext.title
+    ).addClass('passive'
+    ).focus(function(){
+        if ( this.value === this.title )
+        {
+            jQuery( this ).removeClass('passive').val('');
+        }
+    }).blur(function(){
+        if ( this.value === '' )
+        {
+            jQuery( this ).addClass('passive').val( this.title );
+        }
+    });
 })( jQuery );
 {/literal}
 
@@ -184,9 +185,6 @@ document.getElementById('header-usermenu-logout').innerHTML += '<span class="hea
 </script>
 {include uri="design:admin2pp/preview.tpl"}
 {include uri="design:admin2pp/dashboard_preferences_window.tpl"}
-{if and( $ui_context|ne( 'browse' ), is_set( $module_result.node_id ) )}
-    {include uri="design:admin2pp/resizable_object_info.tpl"}
-{/if}
 
 {* This comment will be replaced with actual debug report (if debug is on). *}
 <!--DEBUG_REPORT-->
