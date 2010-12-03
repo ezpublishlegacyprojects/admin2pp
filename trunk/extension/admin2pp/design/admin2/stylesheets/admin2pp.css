@@ -169,12 +169,6 @@ background:url(../images/admin2pp-loader-right-menu.gif) no-repeat center 4em;
 height:120px;
 }
 
-/* drag n drop */
-tr.ui-state-highlight td
-{
-border-top:1px solid #e9c22b;
-border-bottom:1px solid #e9c22b;
-}
 /* system infos dashboard block */
 #admin2pp-sysinfo pre
 {
@@ -188,28 +182,4 @@ margin:0 0.5em 0.5em 0.5em;
 #admin2pp_db_sysinfo p.waiting
 {
 display:none;
-}
-/* resizable object info */
-.box-content .ui-resizable-s
-{
-height:7px;
-background:#f8f8f8 url(../images/v-sprite-43.png) no-repeat center -176px;
-bottom:-4px;
-z-index:10;
-}
-.box-content .ui-resizable-s:hover
-{
-background:#eaeaea url(../images/v-sprite-43.png) no-repeat center -184px;
-}
-.box-content
-{
-padding-bottom:3px;
-}
-.controlbar div.button-left, .controlbar div.button-right
-{
-margin-top:4px;
-}
-p.versions
-{
-border-top:1px solid #ccc;
 }
