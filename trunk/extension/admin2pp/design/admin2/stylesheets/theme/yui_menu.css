@@ -351,7 +351,7 @@ a.yuimenuitemlabel-disabled{
 
 /* TOP TOOLBAR STYLE */
 .yui-button {
-    background: url("../../images/2/gradient-to-darker.png") repeat-x scroll center bottom #F5F5F5;
+    background:/*url("../../images/2/gradient-to-darker.png") repeat-x scroll left bottom*/#F5F5F5 url(../../images/h-sprite-43.png) repeat-x 0 -197px;
     border-color: #CCCCCC;
     border: 1px solid #CCCCCC;
     text-decoration: none;
@@ -373,7 +373,7 @@ a.yuimenuitemlabel-disabled{
 }
 
 .yui-button button {
-    background: url("../../images/2/gradient-to-darker.png") repeat-x scroll center bottom #F5F5F5;
+    background:/*url("../../images/2/gradient-to-darker.png") repeat-x scroll left bottom*/#F5F5F5 url(../../images/h-sprite-43.png) repeat-x 0 -197px;
     color: #0B4E7A;
     cursor: pointer;
     display: block;

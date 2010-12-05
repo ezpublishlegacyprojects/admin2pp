@@ -130,7 +130,7 @@ th.yui-dt-hidden, tr.yui-dt-odd .yui-dt-hidden, tr.yui-dt-even .yui-dt-hidden {
 }
 
 .yui-dt th {
-    background:url("../../images/2/gradient-to-darker.png") repeat-x scroll left bottom #FAFAFA;
+    background:/*url("../../images/2/gradient-to-darker.png") repeat-x scroll left bottom*/#FAFAFA url(../../images/h-sprite-43.png) repeat-x 0 -197px;
 }
 
 .yui-dt th,.yui-dt th a {
@@ -222,7 +222,7 @@ th.yui-dt-hidden, tr.yui-dt-odd .yui-dt-hidden, tr.yui-dt-even .yui-dt-hidden {
 }
 
 th.yui-dt-asc,th.yui-dt-desc {
-    background:url("../../images/2/gradient-to-darker.png") repeat-x scroll left bottom #FAFAFA;
+    background:/*url("../../images/2/gradient-to-darker.png") repeat-x scroll left bottom*/#FAFAFA url(../../images/h-sprite-43.png) repeat-x 0 -197px;
 }
 
 th.yui-dt-sortable .yui-dt-label {
@@ -446,7 +446,7 @@ a.yui-dt-page {
 }
 
 .yui-pg-first,.yui-pg-previous,.yui-pg-next,.yui-pg-last {
-    background: url("../../images/2/gradient-to-darker.png") repeat-x scroll center bottom #F5F5F5;
+    background:/*url("../../images/2/gradient-to-darker.png") repeat-x scroll left bottom*/#F5F5F5 url(../../images/h-sprite-43.png) repeat-x 0 -197px;
     border-color: -moz-use-text-color #CCCCCC #CCCCCC;
     border: 1px solid #CCCCCC;
     text-decoration: none;

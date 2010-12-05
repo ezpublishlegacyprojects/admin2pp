@@ -150,7 +150,7 @@ a.show-hide-tabs
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
-    background: #f3f3f3 url('../../images/2/gradient-to-darker.png') repeat-x left top scroll;
+    background: #f3f3f3 url(../../images/h-sprite-43.png) repeat-x 0 -197px;/*url('../../images/2/gradient-to-darker.png') repeat-x left top scroll;*/
     border: 1px solid #CCCCCC;
     cursor: pointer;
     font-weight: normal;
