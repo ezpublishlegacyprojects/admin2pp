@@ -386,37 +386,39 @@ a.yuimenuitemlabel-disabled{
 }
 
 #ezbtn-more button {
-    background: url("../../images/2/icon-arrow-down.png") no-repeat scroll 98% 50% transparent;
+    background: url("../../images/icons-sprite24.png") no-repeat scroll 98% -126px transparent;/*url("../../images/2/icon-arrow-down.png") no-repeat scroll 98% 50% transparent*/
     padding-right: 1.7em;
 }
 
 #ezbtn-items-button { 
-    background: url(../../images/2/icon-check-16x16.png) no-repeat scroll 5% 50% transparent; 
+    background:url(../../images/icons-sprite24.png) no-repeat scroll 5% 2px transparent;/*url(../../images/2/icon-check-16x16.png) no-repeat scroll 5% 50% transparent*/ 
     padding-left: 2em;
 }
 
 #ezbtn-new-button {
-    background: url(../../images/2/icon-add-16x16.png) no-repeat scroll 5% 50% transparent;
+    background:url(../../images/icons-sprite24.png) no-repeat scroll 5% -94px transparent;/*url(../../images/2/icon-add-16x16.png) no-repeat scroll 5% 50% transparent*/
     padding-left: 2em;
 }
 
 .yui-button-disabled #ezbtn-new-button {
-    background: url(../../images/2/icon-add-disabled-16x16.png) no-repeat scroll 5% 50% transparent;
+    background:url(../../images/icons-sprite24.png) no-repeat scroll 5% -294px transparent;/*url(../../images/2/icon-add-disabled-16x16.png) no-repeat scroll 5% 50% transparent*/
     padding-left: 2em;
     color: #888
 }
 
 #ezbtn-options-button {
-    background: url(../../images/2/icon-options-16x16.png) no-repeat scroll 5% 50% transparent;
+    background:url(../../images/icons-sprite24.png) no-repeat scroll 5% -326px transparent;/*url(../../images/2/icon-options-16x16.png) no-repeat scroll 5% 50% transparent*/
     padding-left: 2em;
 }
 
 #ezopt-menu-remove {
     background-image: url('../../images/trash-icon-16x16.gif');
+    background-position: 5% 50%;
 }
 
 #ezopt-menu-move {
-    background-image: url('../../images/2/icon-move-16x16.png');
+    background-image:url(../../images/icons-sprite24.png);/*url('../../images/2/icon-move-16x16.png');*/
+    background-position:5% -157px;
 }
 
 #ezopt-menu-edit {
@@ -428,10 +430,12 @@ a.yuimenuitemlabel-disabled{
 }
 
 #ezopt-menu-check {
-    background-image: url('../../images/2/icon-checked-16x16.png');
+    background-image:url(../../images/icons-sprite24.png);/*url('../../images/2/icon-checked-16x16.png');*/
+    background-position:5% -61px;
 }
 #ezopt-menu-uncheck {
-    background-image: url('../../images/2/icon-unchecked-16x16.png');
+    background-image:url(../../images/icons-sprite24.png);/*url('../../images/2/icon-unchecked-16x16.png');*/
+    background-position:5% -29px;
 }
 
 #ezopt-menu-view {
@@ -462,6 +466,6 @@ a.yuimenuitemlabel-disabled{
 #ezopt-menu-multiupload,
 #ezopt-menu-list {
     background-repeat: no-repeat;
-    background-position: 5% 50%;
+    /*background-position: 5% 50%;*/
     padding-left: 1em;
 }

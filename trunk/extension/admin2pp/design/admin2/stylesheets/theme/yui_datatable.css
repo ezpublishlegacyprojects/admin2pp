@@ -230,15 +230,17 @@ th.yui-dt-sortable .yui-dt-label {
 }
 
 th.yui-dt-asc .yui-dt-liner {
-    background:
+    /*background:
         url(../../images/2/yui-arrow-up.png)
-        no-repeat right;
+        no-repeat right;*/
+    background:url(../../images/icons-sprite24.png) no-repeat right -267px;
 }
 
 th.yui-dt-desc .yui-dt-liner {
-    background:
+    /*background:
         url(../../images/2/yui-arrow-dn.png)
-        no-repeat right;
+        no-repeat right;*/
+    background:url(../../images/icons-sprite24.png) no-repeat right -247px;
 }
 
 tbody .yui-dt-editable {
@@ -515,11 +517,11 @@ span.yui-pg-first,span.yui-pg-previous,span.yui-pg-next,span.yui-pg-last
 }
 
 .crankfield {
-    background: url("../../images/2/icon-crank-16x16.png") no-repeat scroll center center transparent;
+    background:url(../../images/icons-sprite24.png) no-repeat scroll 0 -192px transparent;/*url("../../images/2/icon-crank-16x16.png") no-repeat scroll center center transparent*/
 }
 
 .crankfield-disabled {
-    background: url("../../images/2/icon-crank-disabled-16x16.png") no-repeat scroll center center transparent;
+    background:url(../../images/icons-sprite24.png) no-repeat scroll 0 -208px transparent;/*url("../../images/2/icon-crank-disabled-16x16.png") no-repeat scroll center center transparent*/
 }
 
 .thumbfield {
@@ -530,7 +532,7 @@ span.yui-pg-first,span.yui-pg-previous,span.yui-pg-next,span.yui-pg-last
 .thumbview{
     position: relative;
     z-index: 0;
-    background: url("../../images/2/thumbnail.png") no-repeat scroll center center transparent;
+    background:url(../../images/icons-sprite24.png) no-repeat scroll 0 -224px transparent;/*url("../../images/2/thumbnail.png") no-repeat scroll center center transparent*/
 }
 
 .thumbview:hover{
