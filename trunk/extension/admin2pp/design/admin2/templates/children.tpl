@@ -79,7 +79,7 @@
 </div>
 
 {* Load yui code for subitems diplay even if current node has no children (since cache blocks  does not vary by this) *}
-{ezscript_require( array('ezjsc::yui2', 'ezajaxsubitems_datatable.js') )}
+{*ezscript_require( array('ezjsc::yui2', 'ezajaxsubitems_datatable.js') )*}
 
 <!-- Children END -->
 
