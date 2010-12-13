@@ -48,36 +48,16 @@ class admin2ppAjaxFunctions extends ezjscServerFunctions
 
     public static function preview( $args )
     {
-        $nodeID = intval( $args[0] );
-        $node = eZContentObjectTreeNode::fetch( $nodeID );
-        $result = array();
-        if ( $node instanceof eZContentObjectTreeNode )
+        $id = isset( $args[0] ) ? intval( $args[0] ) : 0;
+        $type = isset( $args[1] ) ? $args[1] : '';
+        try
         {
-            $tpl = eZTemplate::factory();
-            $tpl->setVariable( 'node', $node );
-            $result['edit']   = false;
-            $result['copy']   = false;
-            if ( $node->attribute( 'can_edit' ) )
-            {
-                $url = 'content/edit/' . $node->attribute( 'contentobject_id' );
-                eZURI::transformURI( $url );
-                $result['edit'] = $url;
-                $url = 'content/copy/' . $node->attribute( 'contentobject_id' );
-                eZURI::transformURI( $url );
-                $result['copy'] = $url;
-            }
-            $result['remove'] = false;
-            if ( $node->attribute( 'can_remove' ) )
-            {
-                $result['remove'] = true;
-            }
-            $result['move']   = false;
-            if ( $node->attribute( 'can_move' ) )
-            {
-                $result['move'] = true;
-            }
-            $result['title'] = $tpl->fetch( 'design:admin2ppajax/preview_title.tpl' );
-            $result['preview'] = $tpl->fetch( 'design:admin2ppajax/preview.tpl' );
+            $preview = new admin2ppPreview( $id, $type );
+            $result = $preview->process();
+        }
+        catch( Exception $e )
+        {
+            $result = array( 'error' => $e->getMessage() );
         }
         return ezjscAjaxContent::autoEncode( $result );
     }

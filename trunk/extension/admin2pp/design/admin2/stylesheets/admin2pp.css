@@ -27,22 +27,46 @@ font-size:0.9em;
 padding-top:10%;
 text-align:center;
 }
-#preview-dialog label, #preview-dialog h6
+#preview-dialog fieldset
 {
-font-weight:bold;
-font-size:1.1em;
-background:#F5F5F5;
-color:#222;
-padding:3px 0;
-margin-bottom:4px;
+margin-bottom:15px;
 }
-a.admin2pp-action
+#preview-dialog label
 {
-float:left;
+display:inline;
+padding-left:20px;
+}
+#preview-dialog .button
+{
+font-size:110%;
+}
+#preview-dialog iframe
+{
+width:100%;
+border:2px solid #888;
+}
+#preview-dialog .ui-state-error
+{
+font-size:120%;
+padding:1em;
+width:80%;
+margin:10px auto;
+}
+.preview
+{
+position:fixed;
+}
+.ui-widget-overlay /* TODO integrate this to jqueryui CSS */
+{
+background:#000;
+}
+#preview-dialog .tools
+{
+padding-top:10px;
 }
 #ui-dialog-title-preview-dialog
 {
-padding-left:1em;
+font-size:1.2em;
 }
 /* dashboard blocks */
 .ui-sortable-placeholder

@@ -8,17 +8,21 @@
 function admin2ppPreviewDialog( selector )
 {
     this.currentNodeID = 0;
+    this.currentContentObjectID = 0;
+
     this.dialogSelector = selector;
     this.defaultTitle = '';
     this.defaultContent = '';
-    this.previewWidth = 0;
-    this.previewHeight = 0;
+    this.errorText = '';
     this.linkText = '';
-    this.editText = '';
-    this.removeText = '';
-    this.moveText = '';
-    this.copyText = '';
 }
+
+admin2ppPreviewDialog.WINDOW_PADDING_LEFT = 40;
+admin2ppPreviewDialog.WINDOW_PADDING_TOP = 20;
+admin2ppPreviewDialog.IFRAME_OFFSET = 40;
+
+admin2ppPreviewDialog.UPDATE_BUTTON = '#preview-update';
+admin2ppPreviewDialog.PREVIEW_CHOOSE = '#preview-choose';
 
 admin2ppPreviewDialog.removeNode = function( nodeID )
                                    {
@@ -55,146 +59,141 @@ admin2ppPreviewDialog.prototype =
                    {
                        var d = jQuery( this.dialogSelector );
                        var t = jQuery( this.getTitleSelector() );
+                       this.currentNodeID = 0;
+                       this.currentContentObjectID = 0;
                        t.html( this.defaultTitle );
                        d.html( this.defaultContent );
-                       jQuery( this.getTitleSelector() ).parent().find( 'a.admin2pp-action' ).remove();
                    },
 
-    addSimpleLink:function( url, text, type, callback )
+    buildError:function( errorMsg )
+               {
+                   var d = jQuery( this.dialogSelector );
+                   var t = jQuery( this.getTitleSelector() );
+                   if ( !errorMsg )
+                   {
+                       errorMsg = this.errorText;
+                   }
+                   d.html( '<div class="ui-state-error ui-corner-all"><span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-alert"></span>' + errorMsg + '</div>' );
+                   t.html( errorMsg );
+               },
+
+    updatePreview:function( evt )
                   {
-                      var nodeID = this.currentNodeID;
-                      var link = '<a class="ui-dialog-titlebar-' + type + ' ui-corner-all admin2pp-action" title="' + text + '" href="' + url + '"><span class="ui-icon ui-icon-' + type + '">' + text + '</span></a>';
-                      jQuery( this.getTitleSelector() ).before( link );
-                      if ( callback )
-                      {
-                          jQuery( this.getTitleSelector() ).parent().find( 'a.ui-dialog-titlebar-' + type ).click(function()
-                                                                                                                  {
-                                                                                                                      return callback( nodeID ); 
-                                                                                                                  });
-                      }
+                      var select = jQuery( admin2ppPreviewDialog.PREVIEW_CHOOSE ), iframe = jQuery( this.dialogSelector + ' iframe' ), button = jQuery( evt.target );
+                      var tmp = select.val().split( ',' );
+                      var lang = tmp[0], sa = tmp[1], currentURL = iframe.attr( 'src' );
+                      var parts = currentURL.split( '/' );
+                      parts[parts.length - 1] = sa;
+                      parts[parts.length - 3] = lang;
+                      iframe.attr( 'src', parts.join( '/' ) );
+                      button.removeClass( 'defaultbutton' );
                   },
+
+    highlightButton:function( evt )
+                    {
+                        jQuery( admin2ppPreviewDialog.UPDATE_BUTTON ).addClass( 'defaultbutton' );
+                    },
 
     buildPreview:function( content )
                  {
-                     var d = jQuery( this.dialogSelector );
-                     var t = jQuery( this.getTitleSelector() );
+                     var i = this;
+                     var d = jQuery( this.dialogSelector ), t = jQuery( this.getTitleSelector() );
                      t.html( content.title );
-                     if ( content.edit )
-                     {
-                         this.addSimpleLink( content.edit, this.editText, 'pencil' );
-                     }
-                     if ( content.remove )
-                     {
-                         this.addSimpleLink( '#', this.removeText, 'trash', admin2ppPreviewDialog.removeNode );
-                     }
-                     if ( content.copy )
-                     {
-                         this.addSimpleLink( content.copy, this.copyText, 'copy' );
-                     }
-                     if ( content.move )
-                     {
-                         this.addSimpleLink( '#', this.moveText, 'transferthick-e-w', admin2ppPreviewDialog.moveNode );
-                     }
-
-                     var actionButtons = jQuery( this.getTitleSelector() ).parent().find( 'a.admin2pp-action' );
-                     actionButtons.mouseover(function( evt )
-                                             {
-                                                 jQuery( this ).addClass( 'ui-state-hover' );
-                                             });
-
-                     actionButtons.mouseout(function( evt )
-                                            {
-                                                jQuery( this ).removeClass( 'ui-state-hover' );
-                                            });
+                     this.currentNodeID = content.node_id;
+                     this.currentContentObjectID = content.object_id;
                      d.html( content.preview );
+                     jQuery( admin2ppPreviewDialog.UPDATE_BUTTON ).click( function( evt ) { i.updatePreview( evt ) } );
+                     jQuery( admin2ppPreviewDialog.PREVIEW_CHOOSE ).change( this.highlightButton );
+                     jQuery( this.dialogSelector + ' .edit').click( function( evt ) { location.href = content.edit } ); // TODO use the language of the preview
+                     jQuery( this.dialogSelector + ' .copy').click( function( evt ) { location.href = content.copy } );
+                     jQuery( this.dialogSelector + ' .move').click( function( evt ) { admin2ppPreviewDialog.moveNode( content.node_id ) } );
+                     jQuery( this.dialogSelector + ' .remove').click( function( evt ) { admin2ppPreviewDialog.removeNode( content.node_id ) } );
+                     this.setIFrameHeight();
                  },
 
     init:function()
          {
              var instance = this;
              jQuery( instance.dialogSelector ).dialog({ autoOpen: false,
+                                                        resizable: false,
+                                                        draggable: false,
+                                                        dialogClass: 'preview',
+                                                        modal: true,
                                                         open: function( evt, ui )
                                                               {
-                                                                  jQuery.ez( 'admin2ppajax::preview::' + instance.currentNodeID,
-                                                                             false,
+                                                                  var url = 'admin2ppajax::preview::';
+                                                                  if ( instance.currentNodeID != 0 )
+                                                                  {
+                                                                      url += instance.currentNodeID + '::node_id';
+                                                                  }
+                                                                  else
+                                                                  {
+                                                                      url += instance.currentContentObjectID + '::object_id';
+                                                                  }
+                                                                  jQuery.ez( url, false,
                                                                              function( data )
                                                                              {
+                                                                                 instance.storeDefault();
                                                                                  if ( data.content )
                                                                                  {
                                                                                      var content = jQuery.parseJSON( data.content );
-                                                                                     instance.storeDefault();
+                                                                                     if ( content.error != "" )
+                                                                                     {
+                                                                                        instance.buildError( content.error );
+                                                                                     }
                                                                                      instance.buildPreview( content );
                                                                                  }
+                                                                                 else
+                                                                                 {
+                                                                                     instance.buildError();
+                                                                                 }
                                                                              });
+
                                                               },
                                                         close: function( evt, ui )
                                                                {
                                                                    instance.restoreDefault(); 
-                                                               },
-                                                        resizeStop: function( evt, ui )
-                                                                    {
-                                                                        var width = ui.size.width, height = ui.size.height;
-                                                                        instance.previewWidth = width;
-                                                                        instance.previewHeight = height;
-                                                                        admin2ppAjaxSavePreference( 'admin2pp_preview_width', width );
-                                                                        admin2ppAjaxSavePreference( 'admin2pp_preview_height', height );
-                                                                    }
+                                                               }
                                                       });
-             // TODO refactoring needed
-             jQuery( '#menu-view' ).click(function( evt )
-                                          {
-                                              var p = jQuery( instance.dialogSelector ), previewLink = jQuery( evt.target )
-                                              instance.currentNodeID = previewLink.attr( 'href' ).split("/").pop();
-                                              var linkNode = jQuery( '#n' + instance.currentNodeID + ' a.image-text' );
-                                              instance.openDialogAt( linkNode, 'right_of', [5, -8] );
-                                              window.ezpopmenu_hideAll();
-                                              return false;
-                                          }).html( instance.linkText );
 
-             jQuery( '#child-menu-view' ).click(function( evt )
-                                          {
-                                              var p = jQuery( instance.dialogSelector ), previewLink = jQuery( evt.target )
-                                              instance.currentNodeID = previewLink.attr( 'href' ).split("/").pop();
-                                              var menuNode = jQuery( '#SubitemsContextMenu' );
-                                              instance.openDialogAt( menuNode, 'left_of', [6, -20] );
-                                              window.ezpopmenu_hideAll();
-                                              return false;
-                                          }).html( instance.linkText );
+             jQuery( '#child-menu-preview' ).click(function( evt )
+                                                   {
+                                                       var previewLink = jQuery( evt.target )
+                                                       var tmp = previewLink.attr( 'href' ).split("/");
+                                                       tmp.pop();
+                                                       instance.currentContentObjectID = tmp.pop();
+                                                       instance.open();
+                                                       return false;
+                                                  }).html( instance.linkText );
              jQuery( '#bookmark-view' ).click(function( evt )
                                               {
-                                                  var p = jQuery( instance.dialogSelector ), previewLink = jQuery( evt.target )
-                                                  instance.currentNodeID = previewLink.attr( 'href' ).split("/").pop();
-                                                  instance.openDialogAt( jQuery( '#bookmarks' ), 'left_of', [-instance.previewWidth, 0] );
-                                                  window.ezpopmenu_hideAll();
+                                                  var previewLink = jQuery( evt.target )
+                                                  var tmp = previewLink.attr( 'href' ).split("/");
+                                                  instance.currentNodeID = tmp.pop();
+                                                  instance.open();
                                                   return false;
                                               }).html( instance.linkText );
 
          },
 
-         openDialogAt:function( positionElt, type, manualOffset )
-                      {
-                          var instance = this;
-                          var p = jQuery( instance.dialogSelector );
-                          var offset = positionElt.offset();
-                          var topPos = offset.top + manualOffset[1] - jQuery(document).scrollTop();
-                          if ( (topPos + instance.previewHeight) > jQuery(window).height() )
-                          {
-                              topPos = topPos - ( (topPos + instance.previewHeight) - jQuery(window).height() ) - 10;
-                          }
-                          var leftPos = 0;
-                          if ( type == 'right_of' )
-                          {
-                              leftPos = offset.left + positionElt.outerWidth() + manualOffset[0];
-                          }
-                          else
-                          {
-                              leftPos = offset.left + manualOffset[0];
-                          }
-                          p.dialog( 'option', 'position', [ leftPos, topPos ] );
-                          p.dialog( 'option', 'width', instance.previewWidth );
-                          p.dialog( 'option', 'height', instance.previewHeight );
-                          p.dialog( 'open' );
-                      }
+         open:function()
+              {
+                  var p = jQuery( this.dialogSelector );
+                  p.dialog( 'option', 'position', 'center' );
+                  p.dialog( 'option', 'width', jQuery(window).width() - (admin2ppPreviewDialog.WINDOW_PADDING_LEFT * 2) );
+                  p.dialog( 'option', 'height', jQuery(window).height() - (admin2ppPreviewDialog.WINDOW_PADDING_TOP * 2) );
+                  p.dialog( 'open' );
+                  window.ezpopmenu_hideAll();
+              },
+
+        setIFrameHeight:function()
+                        {
+                            var p = jQuery( '#preview-dialog' );
+                            var f = jQuery( this.dialogSelector + ' fieldset' );
+                            var t = jQuery( this.dialogSelector + ' .tools' );
+                            var ifr = jQuery( this.dialogSelector + ' iframe' );
+                            ifr.css( 'height', p.innerHeight() - f.outerHeight() - t.outerHeight() - admin2ppPreviewDialog.IFRAME_OFFSET );
+                        }
 
 }
 
