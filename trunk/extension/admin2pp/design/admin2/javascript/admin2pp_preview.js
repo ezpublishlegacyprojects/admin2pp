@@ -167,14 +167,23 @@ admin2ppPreviewDialog.prototype =
                                                   }).html( instance.linkText );
              jQuery( '#bookmark-view' ).click(function( evt )
                                               {
-                                                  var previewLink = jQuery( evt.target )
-                                                  var tmp = previewLink.attr( 'href' ).split("/");
-                                                  instance.currentNodeID = tmp.pop();
-                                                  instance.open();
-                                                  return false;
+                                                  return instance._initFromContentViewLink( evt );
                                               }).html( instance.linkText );
+             jQuery( '#menu-view' ).click(function( evt )
+                                          {
+                                              return instance._initFromContentViewLink( evt );
+                                          }).html( instance.linkText );
 
          },
+
+        _initFromContentViewLink:function( evt )
+                                 {
+                                     var previewLink = jQuery( evt.target );
+                                     var tmp = previewLink.attr( 'href' ).split("/");
+                                     this.currentNodeID = tmp.pop();
+                                     this.open();
+                                     return false;
+                                 },
 
          open:function()
               {
