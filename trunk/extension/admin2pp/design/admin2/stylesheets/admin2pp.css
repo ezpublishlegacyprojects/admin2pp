@@ -36,7 +36,7 @@ margin-bottom:15px;
 display:inline;
 padding-left:20px;
 }
-#preview-dialog .button
+#preview-dialog .button,#preview-dialog .button-disabled
 {
 font-size:110%;
 }
