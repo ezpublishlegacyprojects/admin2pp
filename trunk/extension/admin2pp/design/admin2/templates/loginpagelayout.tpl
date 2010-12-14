@@ -64,6 +64,20 @@
 <script type="text/javascript">
 jQuery(window).load(function(){* when everything is loaded we can start preloading components *}
 {ldelim}
+
+{def $yui_modules = array( 'datatable', 'button', 'container', 'cookie' )}
+    var options = [];
+    {if ezini( 'ExtensionSettings', 'ActiveExtensions' )|contain( 'ezoe' )}
+
+    YUILoader.addModule({ldelim}name: 'tinymce_jquery',
+                         type: 'js',
+                         fullpath: {"javascript/tiny_mce_jquery.js"|ezdesign( 'quote' )}{rdelim});
+    {set $yui_modules = $yui_modules|append( 'tinymce_jquery' )}
+    {/if}
+
+    YUILoader.require([{foreach $yui_modules as $module}{delimiter}, {/delimiter}'{$module}'{/foreach}]);
+    YUILoader.insert(options, 'js');
+
 {def $iconInfo = icon_info('class')
      $classIconsSize = ezini( 'TreeMenu', 'ClassIconsSize', 'contentstructuremenu.ini' )
      $images_list = ezini( 'PreloadSettings', 'Images', 'admin2pp.ini' )

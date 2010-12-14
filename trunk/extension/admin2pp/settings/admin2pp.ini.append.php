@@ -11,6 +11,7 @@ Images[]
 # so preloading it can be useful
 Images[]=v-sprite-43.png
 Images[]=icons-sprite24.png
+Images[]=2/yui_sprite.png
 Images[]=edit.gif
 Images[]=copy.gif
 Images[]=move.gif
@@ -20,6 +21,7 @@ Images[]=trash-icon-16x16.gif
 Images[]=admin2pp-loader.gif
 Images[]=admin2pp-loader-right-menu.gif
 Images[]=admin2pp-loader-small.gif
+Images[]=current-user.gif
 
 # images to preload that are not in images folder
 NonStandardImages[]
