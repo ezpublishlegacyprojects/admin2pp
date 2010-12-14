@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  $Id$
+  $HeadURL$
+-->
+<software>
+    <metadata>
+        <name>admin2++</name>
+        <version>0.2alpha1</version>
+        <copyright>Copyright (C) 2010 Damien Pobel</copyright>
+        <license>GNU General Public License v2.0</license>
+        <info_url>http://projects.ez.no/admin2pp</info_url>
+
+        <software>
+            <uses>
+                <name>jQueryUI</name>
+                <license>GNU General Public License v2.0</license>
+                <copyright>jQuery UI Team</copyright>
+                <version>1.8.6</version>
+            </uses>
+        </software>
+
+    </metadata>
+
+    <dependencies>
+        <requires>
+            <extension name="ezjscore" />
+        </requires>
+    </dependencies>
+
+</software>
