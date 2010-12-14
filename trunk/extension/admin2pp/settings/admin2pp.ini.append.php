@@ -41,10 +41,6 @@ NonStandardImages[]=javascript/themes/ez/img/icons.png
 NonStandardImages[]=stylesheets/skins/o2k7/img/button_bg_silver.png
 NonStandardImages[]=stylesheets/skins/o2k7/img/button_bg.png
 
-[PreviewSettings]
-PreviewWidth=450
-PreviewHeight=300
-
 [DashboardSettings]
 BlockNames[]
 # name of default blocks
