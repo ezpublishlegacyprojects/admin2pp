@@ -15,7 +15,7 @@ admin2ppDashboardBlocks.REMOVED_CLASS = "admin2pp_db_removed";
 admin2ppDashboardBlocks.getStateSide = function( selector )
                   {
                       var items = jQuery( selector );
-                      var userPrefs = new Array();
+                      var userPrefs = [];
                       items.each(function()
                                  {
                                      if ( !jQuery( this ).hasClass( admin2ppDashboardBlocks.REMOVED_CLASS ) )
