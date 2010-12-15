@@ -37,6 +37,10 @@
         <translation>Prévisualisation</translation>
     </message>
     <message>
+        <source>An error occured</source>
+        <translation>Une erreur s'est produite</translation>
+    </message>
+    <message>
         <source>Edit</source>
         <translation>Modifier</translation>
     </message>
@@ -51,6 +55,18 @@
     <message>
         <source>Copy</source>
         <translation>Copier</translation>
+    </message>
+    <message>
+        <source>Preview options</source>
+        <translation>Options de prévisualisation</translation>
+    </message>
+    <message>
+        <source>Preview in</source>
+        <translation>Prévisualiser en</translation>
+    </message>
+    <message>
+        <source>Update preview</source>
+        <translation>Mettre à jour la prévisualisation</translation>
     </message>
 </context>
 <context>
