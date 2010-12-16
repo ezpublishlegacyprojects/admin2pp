@@ -87,6 +87,10 @@ class admin2ppPreview
         {
             $this->nodeID = $this->contentObject->attribute( 'main_node_id' );
         }
+        else
+        {
+            $this->contentObjectID = $this->contentObject->attribute( 'id' );
+        }
         $this->node = eZContentObjectTreeNode::fetch( $this->nodeID );
         if ( !$this->node instanceof eZContentObjectTreeNode )
         {
