@@ -22,6 +22,7 @@ Images[]=admin2pp-loader.gif
 Images[]=admin2pp-loader-right-menu.gif
 Images[]=admin2pp-loader-small.gif
 Images[]=current-user.gif
+Images[]=tango/mail-attachment.png
 
 # images to preload that are not in images folder
 NonStandardImages[]
@@ -42,6 +43,16 @@ NonStandardImages[]=stylesheets/ez44/images/ui-bg_flat_0_aaaaaa_40x100.png
 NonStandardImages[]=javascript/themes/ez/img/icons.png
 NonStandardImages[]=stylesheets/skins/o2k7/img/button_bg_silver.png
 NonStandardImages[]=stylesheets/skins/o2k7/img/button_bg.png
+
+YahooModules[]
+YahooModules[]=datatable
+YahooModules[]=button
+YahooModules[]=container
+YahooModules[]=cookie
+
+OEJavaScriptFiles[]
+OEJavaScriptFiles[]=javascript/tiny_mce_jquery.js
+OEJavaScriptFiles[]=javascript/themes/ez/editor_template.js
 
 [DashboardSettings]
 BlockNames[]

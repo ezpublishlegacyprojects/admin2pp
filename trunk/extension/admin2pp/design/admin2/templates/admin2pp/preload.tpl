@@ -6,14 +6,37 @@
 jQuery(window).load(function(){* when everything is loaded we can start preloading components *}
 {ldelim}
 
-{def $yui_modules = array( 'datatable', 'button', 'container', 'cookie' )}
+{def $yui_modules = ezini( 'PreloadSettings', 'YahooModules', 'admin2pp.ini' )}
     var options = [];
-    {if ezini( 'ExtensionSettings', 'ActiveExtensions' )|contain( 'ezoe' )}
+    {if ezini( 'ExtensionSettings', 'ActiveExtensions' )|contains( 'ezoe' )}
 
-    YUILoader.addModule({ldelim}name: 'tinymce_jquery',
+    {foreach ezini( 'PreloadSettings', 'OEJavaScriptFiles', 'admin2pp.ini' ) as $k => $oejs}
+
+    {set $yui_modules = $yui_modules|append( concat( 'ezoe_js_', $k ) )}
+    YUILoader.addModule({ldelim}name: 'ezoe_js_{$k}',
                          type: 'js',
-                         fullpath: {"javascript/tiny_mce_jquery.js"|ezdesign( 'quote' )}{rdelim});
-    {set $yui_modules = $yui_modules|append( 'tinymce_jquery' )}
+                         fullpath: {$oejs|ezdesign( 'quote' )}{rdelim});
+
+    {/foreach}
+
+    {def $plugin_list = ezini('EditorSettings', 'Plugins', 'ezoe.ini',,true() )
+         $ez_locale   = ezini( 'RegionalSettings', 'Locale', 'site.ini')
+         $language    = '-'|concat( $ez_locale )
+         $dependency_js_list   = array( 'ezoe::i18n::'|concat( $language ) )}
+    {foreach $plugin_list as $plugin}
+        {set $dependency_js_list = $dependency_js_list|append( concat( 'plugins/', $plugin|trim, '/editor_plugin.js' ))}
+    {/foreach}
+
+    {foreach ezscriptfiles( $dependency_js_list ) as $k => $dep}
+    {set $yui_modules = $yui_modules|append( concat( 'ezoe_dependencies', $k ) )}
+
+    YUILoader.addModule({ldelim}name: 'ezoe_dependencies{$k}',
+                         type: 'js',
+                         fullpath: '{$dep}'{rdelim});
+
+    {/foreach}
+    {undef $plugin_list $ez_locale $language $dependency_js_list}
+
     {/if}
 
     YUILoader.require([{foreach $yui_modules as $module}{delimiter}, {/delimiter}'{$module}'{/foreach}]);
