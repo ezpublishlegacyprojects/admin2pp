@@ -30,6 +30,11 @@ fieldset
 {
 padding-top:0;
 }
+{** admin2pp specific part **}
+#preview-dialog fieldset
+{
+margin-top:10px;
+}
 </style>
 <![endif]-->
 {/literal}
