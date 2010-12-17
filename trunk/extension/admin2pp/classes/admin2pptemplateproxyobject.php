@@ -3,6 +3,12 @@
  * $Id$
  * $HeadURL$
  *
+ * Provides a proxy object to allow the use of any object in template
+ *
+ * @copyright Copyright (C) 2010 Damien Pobel. All rights reserved.
+ * @license http://ez.no/licenses/gnu_gpl GNU General Public License v2.0
+ * @version 0.2alpha1
+ * @package admin2++
  */
 
 class admin2ppTemplateProxyObject
@@ -34,7 +40,7 @@ class admin2ppTemplateProxyObject
         else if ( is_array( $val ) )
         {
             // transform all elements of the array
-            // into eZTemplateObject to be able to use in template
+            // into admin2ppTemplateProxyObject to be able to use in template
             $func = create_function( '$element',
                                      'if ( is_object( $element ) )
                                       {
