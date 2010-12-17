@@ -1,0 +1,209 @@
+/**
+ * $Id$
+ * $HeadURL$
+ */
+
+/* datepicker for ezdate and ezdatetime */
+div.date button
+{
+color: #fff;
+background: #D1DFE9 url(../images/h-sprite-43.png) repeat-x left -31px;/*url(../../images/2/gradient-blue.png) repeat-x center bottom scroll;*/
+border: 1px solid #dedede;
+border-color: #aaa #ccc #ccc #aaa;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+margin:0 0 0 10px;
+}
+
+.ui-widget
+{
+font-size:0.9em;
+}
+
+/* AJAX preview */
+#preview-dialog p.loader
+{
+padding-top:10%;
+text-align:center;
+}
+#preview-dialog fieldset
+{
+margin-bottom:15px;
+}
+#preview-dialog label
+{
+display:inline;
+padding-left:20px;
+}
+#preview-dialog .button,#preview-dialog .button-disabled
+{
+font-size:110%;
+}
+#preview-dialog iframe
+{
+width:100%;
+border:2px solid #888;
+}
+#preview-dialog .ui-state-error
+{
+font-size:120%;
+padding:1em;
+width:80%;
+margin:10px auto;
+}
+.preview
+{
+position:fixed;
+}
+.ui-widget-overlay /* TODO integrate this to jqueryui CSS */
+{
+background:#000;
+}
+#preview-dialog .tools
+{
+padding-top:10px;
+}
+#ui-dialog-title-preview-dialog
+{
+font-size:1.2em;
+}
+/* dashboard blocks */
+.ui-sortable-placeholder
+{
+border: 1px dotted black;
+visibility: visible !important;
+height: 50px !important;
+}
+.ui-sortable-placeholder *
+{
+visibility: hidden;
+}
+
+.dashboard-item
+{
+padding:0.2em;
+}
+.dashboard-item h2
+{
+margin-top:0;
+padding:3px 5px;
+cursor:move;
+}
+.dashboard-item table
+{
+margin:1em 4px 4px 4px;
+width:auto;
+}
+.dashboard-item p
+{
+margin:0.5em;
+}
+.dashboard-item h2
+{
+font-size:1.3em;
+}
+.content-dashboard .left, .content-dashboard .right
+{
+min-height:50px;
+padding-bottom:20px;
+}
+a.ui-dialog-titlebar-wrench,
+a.ui-dialog-titlebar-refresh,
+a.ui-dialog-titlebar-close
+{
+float:right;
+}
+
+/* dashboard settings */
+ul.settings-dashboard
+{
+list-style-type:none;
+}
+ul.settings-dashboard label
+{
+display:inline;
+}
+#admin2pp_all_choosen
+{
+width:80%;
+margin:10px auto;
+}
+.settings-dashboard li.active
+{
+display:none;
+}
+#admin2pp-db-window p.button-bar
+{
+margin-top:20px;
+}
+
+/* advanced search dashboard block */
+.dashboard-advanced-search
+{
+margin-top:1em;
+padding:5px;
+}
+.dashboard-item .semi
+{
+float:left;
+width:49%;
+}
+.dashboard-item .semi
+{
+padding-bottom:5px;
+}
+.dashboard-item .inactive label
+{
+color:#888;
+}
+.dashboard-item .semi input
+{
+width:90%;
+border: 1px solid #666;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+line-height: 18px !important;
+}
+.dashboard-advanced-search .button-bar
+{
+text-align:center;
+}
+/* feed reader dashboard block */
+div.feed-reader-result h3
+{
+margin: 0.2em 0 0 1em;
+}
+p.waiting
+{
+text-align:center;
+font-style:italic;
+}
+p.waiting img
+{
+display:block;
+margin:10px auto;
+}
+
+/* right menu AJAX loading */
+#rightmenu.loading
+{
+background:url(../images/admin2pp-loader-right-menu.gif) no-repeat center 4em;
+height:120px;
+}
+
+/* system infos dashboard block */
+#admin2pp-sysinfo pre
+{
+padding:4px;
+overflow:auto;
+}
+#admin2pp-sysinfo dd
+{
+margin:0 0.5em 0.5em 0.5em;
+}
+#admin2pp_db_sysinfo p.waiting
+{
+display:none;
+}
