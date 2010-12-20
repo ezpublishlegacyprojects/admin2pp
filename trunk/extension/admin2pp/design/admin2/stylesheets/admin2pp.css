@@ -207,3 +207,8 @@ margin:0 0.5em 0.5em 0.5em;
 {
 display:none;
 }
+/* keyword autocomplete */
+.ui-autocomplete-loading
+{
+background: url(../images/admin2pp-loader-small.gif) right center no-repeat;
+}

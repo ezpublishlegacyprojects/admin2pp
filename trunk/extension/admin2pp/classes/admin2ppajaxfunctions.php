@@ -162,6 +162,36 @@ class admin2ppAjaxFunctions extends ezjscServerFunctions
         return $content;
     }
 
+    public static function complete( $args )
+    {
+        if ( !isset( $args[0] ) )
+        {
+            return '';
+        }
+        $tag = trim( urldecode( $args[0] ) );
+        if ( $tag === '' )
+        {
+            return '';
+        }
+        $db = eZDB::instance();
+        $limit = intval( eZINI::instance( 'admin2pp.ini' )->variable( 'KeywordAutocomplete', 'MaxResults' ) );
+        $query = "SELECT DISTINCT( keyword ) FROM ezkeyword WHERE
+                    keyword LIKE '" . $db->escapeString( $tag ) . "%'";
+        $params = array();
+        if ( $limit !== 0 )
+        {
+            $params = array( 'limit' => $limit,
+                             'offset' => 0 );
+        }
+        $rows = $db->arrayQuery( $query, $params );
+        $result = array();
+        foreach( $rows as $row )
+        {
+            $result[] = $row['keyword'];
+        }
+        return $result;
+    }
+
 }
 
 ?>

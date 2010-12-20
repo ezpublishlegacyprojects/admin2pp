@@ -68,4 +68,8 @@ BlockNames[advanced_search]=Advanced search form
 BlockNames[feed_reader]=Feed reader
 BlockNames[sysinfo]=System infos
 
+[KeywordAutocomplete]
+MinLengthStart=2
+MaxResults=20
+
 */ ?>
