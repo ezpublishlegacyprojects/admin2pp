@@ -28,6 +28,7 @@ top:-0.7em;
 }
 fieldset
 {
+margin-top:1.4em;
 padding-top:0;
 }
 {** admin2pp specific part **}
