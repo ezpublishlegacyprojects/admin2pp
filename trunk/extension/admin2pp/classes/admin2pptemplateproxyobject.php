@@ -7,7 +7,7 @@
  *
  * @copyright Copyright (C) 2010 Damien Pobel. All rights reserved.
  * @license http://ez.no/licenses/gnu_gpl GNU General Public License v2.0
- * @version 0.2
+ * @version 0.3alpha1
  * @package admin2++
  */
 
