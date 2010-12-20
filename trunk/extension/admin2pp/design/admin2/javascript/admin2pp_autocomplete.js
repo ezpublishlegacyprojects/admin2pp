@@ -11,6 +11,7 @@ function admin2ppAutoComplete( inputSelector, minLength )
 }
 
 admin2ppAutoComplete.SEPARATOR = ',';
+admin2ppAutoComplete.SPLIT_REGEXP = /,\s*/;
 
 
 admin2ppAutoComplete.prototype =
@@ -32,7 +33,7 @@ admin2ppAutoComplete.prototype =
                                response("");
                                return false;
                            }
-                           var tag = request.term.split( /,\s*/ ).pop();
+                           var tag = request.term.split( admin2ppAutoComplete.SPLIT_REGEXP ).pop();
                            if ( tag.length < instance.minLength )
                            {
                                response("");
@@ -49,7 +50,7 @@ admin2ppAutoComplete.prototype =
 
                 select:function( evt, ui )
                        {
-                           var terms = this.value.split( /,\s*/ );
+                           var terms = this.value.split( admin2ppAutoComplete.SPLIT_REGEXP );
                            terms.pop();
                            terms.push( ui.item.value );
                            terms.push( '' );
