@@ -6,12 +6,7 @@
  */
 
 /* improved textarea, input and fielset */
-#searchtext:focus, .dashboard-item .semi input:focus,
-input.halfbox:focus, textarea.halfbox:focus,
-input.box:focus, textarea.box:focus,
-div.date input:focus, div.time input:focus,
-input.priority:focus, .ezcca-edit-user_account input:focus,
-input.ezcc-product:focus, .ezcca-edit-multiple input:focus
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus
 {
 background-color:#fffec5;
 border: 1px solid #666;
@@ -19,11 +14,7 @@ border: 1px solid #666;
 -webkit-border-radius: 3px;
 border-radius: 3px;
 }
-input.halfbox, textarea.halfbox,
-input.box, textarea.halfbox,
-div.date input, div.time input,
-input.priority, .ezcca-edit-user_account input,
-input.ezcc-product, .ezcca-edit-multiple input
+input[type="text"], input[type="password"], textarea
 {
 border: 1px solid #666;
 -moz-border-radius: 3px;
