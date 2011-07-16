@@ -7,12 +7,15 @@
 div.date button
 {
 color: #fff;
-background: #D1DFE9 url(../images/h-sprite-43.png) repeat-x left -31px;/*url(../../images/2/gradient-blue.png) repeat-x center bottom scroll;*/
-border: 1px solid #dedede;
-border-color: #aaa #ccc #ccc #aaa;
--moz-border-radius: 3px;
--webkit-border-radius: 3px;
+background: #516e9e;
+background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#5d7db1), to(#445c89));
+background-image: -moz-linear-gradient(top,  #5d7db1,  #445c89);
+background-image: -ms-linear-gradient(top,  #5d7db1,  #445c89);
+background-image: -o-linear-gradient(top,  #5d7db1,  #445c89);
+background-image: linear-gradient(top,  #5d7db1,  #445c89);
+border: 1px solid #aaa;
 border-radius: 3px;
+background-clip: padding-box;
 margin:0 0 0 10px;
 }
 

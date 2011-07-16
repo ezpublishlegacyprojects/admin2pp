@@ -10,7 +10,7 @@ Images[]
 # v-sprite-43.png is not used on the login page
 # so preloading it can be useful
 Images[]=v-sprite-43.png
-Images[]=icons-sprite24.png
+Images[]=icons-sprite.png
 Images[]=2/yui_sprite.png
 Images[]=edit.gif
 Images[]=copy.gif
