@@ -435,7 +435,7 @@ a.yuimenuitemlabel-disabled{
     background-image: url(../../images/icons-sprite.png);
     background-position: 5% -157px;
 }
-
+/*
 #ezopt-menu-edit {
     background-image: url('../../images/2/icon-edit-16x16.png');
 }
@@ -443,7 +443,7 @@ a.yuimenuitemlabel-disabled{
 #ezopt-menu-preview {
     background-image: url('../../images/2/icon-preview-16x16.png');
 }
-
+*/
 #ezopt-menu-check {
     background-image: url(../../images/icons-sprite.png);
     background-position: 5% -61px;
@@ -457,7 +457,7 @@ a.yuimenuitemlabel-disabled{
     background-image: url(../../images/icons-sprite.png);
     background-position: 5% -398px;
 }
-
+/*
 #ezopt-menu-view {
     background-image: url('../../images/2/icon-open-16x16.png');
 }
@@ -473,7 +473,7 @@ a.yuimenuitemlabel-disabled{
 #ezopt-menu-list {
     background-image: url('../../images/2/icon-sitemap-16x16.png');
 }
-
+*/
 #ezopt-menu-move, 
 #ezopt-menu-remove, 
 #ezopt-menu-edit, 
