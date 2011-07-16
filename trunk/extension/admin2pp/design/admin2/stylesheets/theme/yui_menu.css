@@ -427,7 +427,8 @@ a.yuimenuitemlabel-disabled{
 }
 
 #ezopt-menu-remove {
-    background-image: url('../../images/trash-icon-16x16.gif');
+    background-image: url(../../images/icons-sprite.png);
+    background-position: 5% -429px;
 }
 
 #ezopt-menu-move {
@@ -453,7 +454,8 @@ a.yuimenuitemlabel-disabled{
 }
 
 #ezopt-menu-toggle {
-    background-image: url('../../images/2/toggle-button-16x16.png');
+    background-image: url(../../images/icons-sprite.png);
+    background-position: 5% -398px;
 }
 
 #ezopt-menu-view {
@@ -483,7 +485,7 @@ a.yuimenuitemlabel-disabled{
 #ezopt-menu-multiupload,
 #ezopt-menu-list {
     background-repeat: no-repeat;
-    background-position: 5% 50%;
+    /*background-position: 5% 50%;*/
     padding-left: 1em;
 }
 
