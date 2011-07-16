@@ -10,13 +10,13 @@ var rightMenuWidthControl = function( contentInfo, uiContext )
             clearTimeout( timeout );
             timeout = null;
         }
-        
+
         var link = jQuery( this ), rightmenu = jQuery('#rightmenu'), hidden = rightmenu.width() < 22;
-        var maincolumn = jQuery('#maincolumn'); 
+        var maincolumn = jQuery('#maincolumn');
 
         if ( hidden )
         {
-        	maincolumn.animate({
+            maincolumn.animate({
                 marginRight: '180px'
             }, 300, 'swing');
 
@@ -46,7 +46,7 @@ var rightMenuWidthControl = function( contentInfo, uiContext )
                 marginRight: '17px'
             }, 300, 'swing');
 
-        	rightmenu.animate({
+            rightmenu.animate({
                 width: '18px'
             }, 300, 'swing', function(){
                 timeout = setTimeout( saveRightMenuStatus, 500 );
@@ -54,11 +54,13 @@ var rightMenuWidthControl = function( contentInfo, uiContext )
         }
         link.html( hidden ? '&raquo;' : '&laquo;' );
     });
-    
+
     function saveRightMenuStatus()
     {
         var show  = jQuery( '#rightmenu' ).width() < 22 ? '' : '1';
-        jQuery.post( jQuery.ez.url.replace( 'ezjscore/', 'user/preferences/set_and_exit/admin_right_menu_show/' ) + show );
+        var _token = '', _tokenNode = document.getElementById('ezxform_token_js');
+        if ( _tokenNode ) _token = 'ezxform_token=' + _tokenNode.getAttribute('title');
+        jQuery.post( jQuery.ez.url.replace( 'ezjscore/', 'user/preferences/set_and_exit/admin_right_menu_show/' ) + show, _token );
     }
 
     function loadRightMenu( contentInfo, uiContext )
