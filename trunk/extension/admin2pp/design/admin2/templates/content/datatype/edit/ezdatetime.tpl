@@ -9,17 +9,17 @@
 
 <div class="date">
 <div class="element">
-<label for="{$id_base}_year">{'Year'|i18n( 'design/standard/content/datatype' )}:</label>
+<label for="{$id_base}_year">{'Year'|i18n( 'design/admin/content/datatype' )}:</label>
 <input id="{$id_base}_year" class="ezcc-{$attribute.object.content_class.identifier} ezcca-{$attribute.object.content_class.identifier}_{$attribute.contentclass_attribute_identifier}" type="text" name="{$attribute_base}_datetime_year_{$attribute.id}" size="5" value="{if $attribute.content.is_valid}{$attribute.content.year}{/if}" />
 </div>
 
 <div class="element">
-<label for="{$id_base}_month">{'Month'|i18n( 'design/standard/content/datatype' )}:</label>
+<label for="{$id_base}_month">{'Month'|i18n( 'design/admin/content/datatype' )}:</label>
 <input id="{$id_base}_month"  class="ezcc-{$attribute.object.content_class.identifier} ezcca-{$attribute.object.content_class.identifier}_{$attribute.contentclass_attribute_identifier}" type="text" name="{$attribute_base}_datetime_month_{$attribute.id}" size="3" value="{if $attribute.content.is_valid}{$attribute.content.month}{/if}" />
 </div>
 
 <div class="element">
-<label for="{$id_base}_day">{'Day'|i18n( 'design/standard/content/datatype' )}:</label>
+<label for="{$id_base}_day">{'Day'|i18n( 'design/admin/content/datatype' )}:</label>
 <input id="{$id_base}_day" class="ezcc-{$attribute.object.content_class.identifier} ezcca-{$attribute.object.content_class.identifier}_{$attribute.contentclass_attribute_identifier}" type="text" name="{$attribute_base}_datetime_day_{$attribute.id}" size="3" value="{if $attribute.content.is_valid}{$attribute.content.day}{/if}" />
 {include uri="design:admin2pp/calendar.tpl"}
 </div>
@@ -27,12 +27,12 @@
 
 <div class="time">
 <div class="element">
-<label for="{$id_base}_hour">{'Hour'|i18n( 'design/standard/content/datatype' )}:</label>
+<label for="{$id_base}_hour">{'Hour'|i18n( 'design/admin/content/datatype' )}:</label>
 <input id="{$id_base}_hour" class="ezcc-{$attribute.object.content_class.identifier} ezcca-{$attribute.object.content_class.identifier}_{$attribute.contentclass_attribute_identifier}" type="text" name="{$attribute_base}_datetime_hour_{$attribute.id}" size="3" value="{if $attribute.content.is_valid}{$attribute.content.hour}{/if}" />
 </div>
 
 <div class="element">
-<label for="{$id_base}_minute">{'Minute'|i18n( 'design/standard/content/datatype' )}:</label>
+<label for="{$id_base}_minute">{'Minute'|i18n( 'design/admin/content/datatype' )}:</label>
 <input id="{$id_base}_minute" class="ezcc-{$attribute.object.content_class.identifier} ezcca-{$attribute.object.content_class.identifier}_{$attribute.contentclass_attribute_identifier}" type="text" name="{$attribute_base}_datetime_minute_{$attribute.id}" size="3" value="{if $attribute.content.is_valid}{$attribute.content.minute}{/if}" />
 </div>
 
