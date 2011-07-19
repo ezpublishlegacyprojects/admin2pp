@@ -85,7 +85,7 @@
     </div>
 {/if}
     <script type="text/javascript">
-        var contentInfo = {json_encode( $module_result.content_info )};
+        var contentInfo = {json_encode( first_set( $module_result.content_info, hash() ) )};
         var uiContext = "{$ui_context}";
         rightMenuWidthControl( contentInfo, uiContext );
     </script>
