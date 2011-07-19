@@ -21,7 +21,9 @@ fieldset
 margin-top:1.4em;
 padding-top:0;
 }
+{/literal}
 {** admin2pp specific part **}
+{literal}
 #preview-dialog fieldset
 {
 margin-top:10px;
