@@ -5,15 +5,17 @@
  */
 
 
-function admin2ppPreviewDialog(selector) {
+function admin2ppPreviewDialog(conf) {
     this.currentNodeID = 0;
     this.currentContentObjectID = 0;
 
-    this.dialogSelector = selector;
+    this.dialogSelector = conf.dialog;
+    this.elements = conf.elements;
+    this.errorText = conf.errorText;
+    this.linkText = conf.linkText;
+
     this.defaultTitle = '';
     this.defaultContent = '';
-    this.errorText = '';
-    this.linkText = '';
 }
 
 admin2ppPreviewDialog.WINDOW_PADDING_LEFT = 40;
@@ -117,9 +119,32 @@ admin2ppPreviewDialog.prototype.buildPreview = function (content) {
 },
 
 admin2ppPreviewDialog.prototype.init = function () {
-    var instance = this;
 
-    jQuery(instance.dialogSelector).dialog({
+    this.initDialog();
+    this.initButtons();
+}
+
+
+admin2ppPreviewDialog.prototype.initButtons = function () {
+    var element, jelt, that = this;
+
+    for(var i=0; i!=this.elements.length; i++) {
+        element = this.elements[i];
+        jelt = jQuery(element.selector);
+        if ( jelt.size() > 0 ) {
+            if ( element.init ) {
+                element.init.call(jelt);
+            }
+            jelt.click(function (evt) {
+                element.click.call(that, evt);
+            });
+        }
+    }
+}
+
+admin2ppPreviewDialog.prototype.initDialog = function () {
+    var that = this;
+    jQuery(this.dialogSelector).dialog({
         autoOpen: false,
         resizable: false,
         draggable: false,
@@ -128,51 +153,31 @@ admin2ppPreviewDialog.prototype.init = function () {
         open: function (evt, ui) {
             var url = 'admin2ppajax::preview::';
 
-            if (instance.currentNodeID != 0) {
-                url += instance.currentNodeID + '::node_id';
+            if (that.currentNodeID != 0) {
+                url += that.currentNodeID + '::node_id';
             } else {
-                url += instance.currentContentObjectID + '::object_id';
+                url += that.currentContentObjectID + '::object_id';
             }
             jQuery.ez(url, false, function (data) {
-                instance.storeDefault();
+                that.storeDefault();
                 if (data.content) {
                     var content = jQuery.parseJSON(data.content);
                     if (content.error != "") {
-                        instance.buildError(content.error);
+                        that.buildError(content.error);
                     }
-                    instance.buildPreview(content);
+                    that.buildPreview(content);
                 } else {
-                    instance.buildError();
+                    that.buildError();
                 }
             });
         },
         close: function (evt, ui) {
-            instance.restoreDefault(); 
+            that.restoreDefault(); 
         }
     });
-
-    jQuery('#child-menu-preview').click(function (evt) {
-        var previewLink = jQuery(evt.target),
-            tmp = previewLink.attr('href').split("/");
-
-        tmp.pop();
-        instance.currentContentObjectID = tmp.pop();
-        instance.open();
-
-        return false;
-    }).html(instance.linkText);
-
-    jQuery('#bookmark-view').click(function (evt) {
-        return instance._initFromContentViewLink(evt);
-    }).html(instance.linkText);
-
-    jQuery('#menu-view').click(function (evt) {
-        return instance._initFromContentViewLink(evt);
-    }).html(instance.linkText);
-
 }
 
-admin2ppPreviewDialog.prototype._initFromContentViewLink = function (evt) {
+admin2ppPreviewDialog.prototype.initFromContentViewLink = function (evt) {
     var previewLink = jQuery(evt.target),
         tmp = previewLink.attr('href').split("/");
 
